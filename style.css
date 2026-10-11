@@ -1,0 +1,25 @@
+.canvasStyle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+#canvasBG {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40vh;
+    height: 40vh;
+    transform: translate(-50%, -50%);
+}
+#canvasA {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(40vh*0.95);
+    height: calc(40vh*0.95);
+    touch-action: none;
+}
