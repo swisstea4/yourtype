@@ -13,6 +13,8 @@ body {
     height: calc(0.22*50vmin);
     margin-left: calc(0.11*50vmin);
     flex-shrink: 0;
+    position: relative;
+    top: calc(((100vh - 50vmin)/2) - 0.11*50vmin - 3vmin);
 }
 #guidelines img, #undo img, #settings img, #resize img{
     width: 100%;
