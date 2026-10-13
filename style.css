@@ -1,105 +1,48 @@
-
-.spacing {
-    height: 2vmin;
-}
-
 #buttons {
-    width: 25vmin;
+    display: flex;
+    justify-content: center;
+    height: 12vmin;
 }
-
-#resize {
+#guidelines img, #undo img, #settings img, #resize img{
     position: relative;
+    top: 0%;
+    left: 0%;
     width: 100%;
+    height: 100%;
 }
-
-#resize img {
-    display: block;
-    width: 100%;
+#buttons button{
+        background: transparent;
+    border: none;
+    cursor: pointer;
 }
-
+#resize {
+    display: flex;
+    position: relative;
+}
 #decrease {
     position: absolute;
     top: 45%;
-    left: 8.6%;
+    left: 50%;
     width: 16%;
     height: 11%;
     background: transparent;
     border: none;
     cursor: pointer;
 }
-
 #increase {
     position: absolute;
     top: 32.69%;
-    left: 34%;
+    left: 74%;
     width: 16%;
-    height: 35.2%;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    height: 35.2%
 }
 
-#guidelines {
-    position: relative;
-    left: 56%;
-    width: 44%;
-    aspect-ratio: 1/1;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-#guidelines img {
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-}
-
-#undo {
-    position: relative;
-    left: 56%;
-    width: 44%;
-    aspect-ratio: 1/1;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-#undo img {
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-}
-
-#settings {
-    position: relative;
-    left: 56%;
-    width: 44%;
-    aspect-ratio: 1/1;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-#settings img {
-    position: absolute;
-    left: 0%;
-    top: 0%;
-    width: 100%;
-}
-#drawingTools {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(calc(-50% - 18vmin), -50%);
+#canvasRow {
     display: flex;
+    height: calc(100vh - 15vh);
     align-items: center;
-    gap: 2vmin;
-}
-#buttons {
-    position: relative;
+    justify-content: center;
+    gap: 5vmin;
 }
 #canvasStyling {
     position: relative;
@@ -112,9 +55,20 @@
     height: 100%;
 }
 #canvasA {
-    z-index: 2;
     position: absolute;
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
     touch-action: none;
+}
+#previous, #next {
+    background: transparent;
+    border: none;
+    width: 12vmin;
+    cursor: pointer;
+}
+#previous img, #next img {
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
