@@ -15,10 +15,9 @@ body {
     display: flex;
     justify-content: center;
     height: 0.22em;
-    margin-left: 0.11em;
     flex-shrink: 0;
     position: relative;
-    top: calc(((100vh - 1em)/2) - 0.11em - 0.06em);
+    top: calc(((100vh - 1em)/2) - 0.11em - 0.03em);
 }
 #guidelines img, #undo img, #settings img, #resize img{
     width: 100%;
