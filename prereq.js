@@ -11,8 +11,8 @@ canvas.width = rect.width;
 canvas.height = rect.height;
 function getpos(original) {
     return {
-        x: Math.max(0, Math.min(rect.width, original.clientX - rect.left)),
-        y: Math.max(0, Math.min(rect.height, original.clientY - rect.top))
+        x: original.clientX - rect.left,
+        y: original.clientY - rect.top
     };
 }
 function normalize(original) {

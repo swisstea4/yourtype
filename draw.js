@@ -1,5 +1,4 @@
 canvas.addEventListener("pointerdown", (event)=> {
-    canvas.setPointerCapture(event.pointerId);
     pos = getpos(event);
     strokePoints.push(normalize(pos));
     strokes.push([normalize(pos)]);

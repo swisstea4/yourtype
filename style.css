@@ -9,8 +9,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 40vh;
-    height: 40vh;
+    width: 40vmin;
+    height: 40vmin;
     transform: translate(-50%, -50%);
 }
 #canvasA {
@@ -19,7 +19,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(40vh*0.95);
-    height: calc(40vh*0.95);
+    width: calc(40vmin*0.95);
+    height: calc(40vmin*0.95);
     touch-action: none;
 }
