@@ -9,9 +9,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="canvasStyling">
-        <canvas id="canvasA"></canvas>
-        <img src="images/canvasbg.png" id="canvasBG">
+    <div id="drawingTools">
+        <div id="buttons">
+            <div id="resize">
+                <img src="images/resize.png">
+                <button id="decrease" type="button"></button>
+                <button id="increase" type="button"></button>
+            </div>
+            <div class="spacing"></div>
+            <button id="guidelines">
+                <img src="images/guidelines.png">
+            </button>
+            <div class="spacing"></div>
+            <button id="undo">
+                <img src="images/undo.png">
+            </button>
+            <div class="spacing"></div>
+            <button id="settings">
+                <img src="images/settings.png"
+            </button>
+        </div>
+        <div id="canvasStyling">
+            <canvas id="canvasA"></canvas>
+            <img src="images/canvasbg.png" id="canvasBG">
+        </div>
     </div>
 </body>
 </html>

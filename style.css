@@ -1,25 +1,120 @@
-.canvasStyle {
+
+.spacing {
+    height: 2vmin;
+}
+
+#buttons {
+    width: 25vmin;
+}
+
+#resize {
     position: relative;
+    width: 100%;
+}
+
+#resize img {
+    display: block;
+    width: 100%;
+}
+
+#decrease {
+    position: absolute;
+    top: 45%;
+    left: 8.6%;
+    width: 16%;
+    height: 11%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#increase {
+    position: absolute;
+    top: 32.69%;
+    left: 34%;
+    width: 16%;
+    height: 35.2%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#guidelines {
+    position: relative;
+    left: 56%;
+    width: 44%;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#guidelines img {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+}
+
+#undo {
+    position: relative;
+    left: 56%;
+    width: 44%;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#undo img {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+}
+
+#settings {
+    position: relative;
+    left: 56%;
+    width: 44%;
+    aspect-ratio: 1/1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#settings img {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+}
+#drawingTools {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% - 18vmin), -50%);
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0;
+    gap: 2vmin;
+}
+#buttons {
+    position: relative;
+}
+#canvasStyling {
+    position: relative;
+    width: 50vmin;
+    height: 50vmin;
 }
 #canvasBG {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40vmin;
-    height: 40vmin;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
 }
 #canvasA {
     z-index: 2;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(40vmin*0.95);
-    height: calc(40vmin*0.95);
+    width: 95%;
+    height: 95%;
     touch-action: none;
 }
