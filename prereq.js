@@ -54,6 +54,7 @@ function redraw() {
             pos = newPos;
             mid = newMid;
         }
+        context.lineTo(pos.x, pos.y);
     }
     context.stroke();
 }
