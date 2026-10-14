@@ -7,12 +7,15 @@ let strokePoints = [];
 let strokes = [];
 let strokeSize = 4;
 
+let canvasSize = 50;
+let penColor = "#1b1b1b";
+
 canvas.width = rect.width;
 canvas.height = rect.height;
 function getpos(original) {
     return {
-        x: original.clientX - rect.left,
-        y: original.clientY - rect.top
+        x: original.pageX - rect.left,
+        y: original.pageY - rect.top
     };
 }
 function normalize(original) {
