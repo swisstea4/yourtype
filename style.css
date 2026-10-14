@@ -1,10 +1,12 @@
 @font-face {
     font-family: "Caveat";
-    src: url("fonts/Caveat-VariableFont_wght.ttf") format("truetype");
+    src: url("fonts/Gorditas-Regular.ttf") format("truetype");
+    font-weight: normal;
 }
-body p{
+@font-face {
     font-family: "Caveat";
-    color: #1b1b1b;
+    src: url("fonts/Gorditas-Bold.ttf") format("truetype");
+    font-weight: bold;
 }
 body {
     margin: 0;
@@ -17,11 +19,15 @@ body {
     align-items: center;
 }
 #writetheletter {
+    font-family: "Caveat";
+    font-weight: normal;
     text-align: center;
     font-size: 5vh;
     margin: 2vh;
 }
 #letter {
+    font-family: "Caveat";
+    font-weight: bold;
     text-align: center;
     font-size: 10vh;
     margin: 2vh;
