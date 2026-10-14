@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvasA");
 const context = canvas.getContext('2d');
 let rect = canvas.getBoundingClientRect();
-let pos;
+let pos, mid;
 let isDrawing = false;
 let strokePoints = [];
 let strokes = [];
@@ -13,9 +13,10 @@ let canvasSize = 50;
 canvas.width = rect.width;
 canvas.height = rect.height;
 function getpos(original) {
+    const r = canvas.getBoundingClientRect();
     return {
-        x: original.pageX - rect.left,
-        y: original.pageY - rect.top
+        x: original.clientX - r.left,
+        y: original.clientY - r.top
     };
 }
 function normalize(original) {
@@ -36,15 +37,23 @@ function beginPath(prev) {
     }
 }
 function redraw() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    beginPath(null);
     for (const stroke of strokes) {
         if (stroke.length == 0) continue;
-        beginPath(null);
-        let point = denormalize(stroke[0]);
-        context.moveTo(point.x, point.y);
-        for (let point of stroke) {
-            point = denormalize(point);
-            context.lineTo(point.x, point.y);
+        let pos = denormalize(stroke[0]);
+        let mid = pos;
+        for (let newPos of stroke) {
+            newPos = denormalize(newPos);
+            context.moveTo(mid.x, mid.y);
+            const newMid = {
+                x : (pos.x + newPos.x)/2,
+                y : (pos.y + newPos.y)/2
+            }
+            context.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
+            pos = newPos;
+            mid = newMid;
         }
-        context.stroke();
     }
+    context.stroke();
 }

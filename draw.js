@@ -1,5 +1,8 @@
 canvas.addEventListener("pointerdown", (event)=> {
+    if (!event.button === 0) return;
+    canvas.setPointerCapture(event.pointerId);
     pos = getpos(event);
+    mid = pos;
     strokePoints.push(normalize(pos));
     strokes.push([normalize(pos)]);
     isDrawing = true;
@@ -8,15 +11,26 @@ canvas.addEventListener("pointerdown", (event)=> {
 });
 canvas.addEventListener("pointermove", (event)=>{
     if (!isDrawing) return;
-    beginPath(pos);
-    pos = getpos(event);
-    strokePoints.push(normalize(pos));
-    strokes[strokes.length-1].push(normalize(pos));
-    context.lineTo(pos.x, pos.y);
+    beginPath(mid);
+    const newPos = getpos(event);
+    strokePoints.push(normalize(newPos));
+    strokes[strokes.length-1].push(normalize(newPos));
+    const newMid = {
+        x : (pos.x + newPos.x)/2,
+        y : (pos.y + newPos.y)/2
+    };
+    context.moveTo(mid.x, mid.y);
+    context.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
     context.stroke();
+    pos = newPos;
+    mid = newMid;
 });
 canvas.addEventListener("pointerup", ()=>{
+    if (!isDrawing) return;
     isDrawing = false;
+    beginPath(mid);
+    context.lineTo(pos.x, pos.y);
+    context.stroke();
 });
 canvas.addEventListener("pointercancel", ()=>{
     isDrawing = false;
