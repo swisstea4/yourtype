@@ -6,9 +6,9 @@ let isDrawing = false;
 let strokePoints = [];
 let strokes = [];
 let strokeSize = 4;
+let strokeColor = "#1b1b1b";
 
 let canvasSize = 50;
-let penColor = "#1b1b1b";
 
 canvas.width = rect.width;
 canvas.height = rect.height;
@@ -29,6 +29,7 @@ function beginPath(prev) {
     context.lineWidth = strokeSize;
     context.lineCap = "round";
     context.lineJoin = "round";
+    context.strokeStyle = strokeColor;
 
     if (prev !== null) {
         context.moveTo(prev.x, prev.y);
