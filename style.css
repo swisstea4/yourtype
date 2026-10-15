@@ -11,6 +11,15 @@
 body {
     margin: 0;
 }
+#settingspage {
+    width: 20vmax;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    z-index: 3;
+    visibility: hidden;
+}
 #wrapper {
     display: flex;
     flex-direction: column;
