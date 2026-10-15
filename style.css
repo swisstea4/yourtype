@@ -59,6 +59,8 @@ body {
 #buttons button{
     background: transparent;
     border: none;
+}
+#guidelines, #undo, #settings, #decrease, #increase{
     cursor: pointer;
 }
 #resize {
