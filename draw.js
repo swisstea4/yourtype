@@ -35,10 +35,3 @@ canvas.addEventListener("pointerup", ()=>{
 canvas.addEventListener("pointercancel", ()=>{
     isDrawing = false;
 });
-const observer = new ResizeObserver(() =>{
-    rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-    redraw();
-});
-observer.observe(canvas.parentElement);

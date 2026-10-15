@@ -10,13 +10,11 @@ let strokeColor = "#1b1b1b";
 
 let canvasSize = 50;
 
-canvas.width = rect.width;
-canvas.height = rect.height;
 function getpos(original) {
     const r = canvas.getBoundingClientRect();
     return {
-        x: original.clientX - r.left,
-        y: original.clientY - r.top
+        x: (original.clientX - r.left)*(canvas.width/r.width),
+        y: (original.clientY - r.top)*(canvas.height/r.height)
     };
 }
 function normalize(original) {
@@ -58,3 +56,12 @@ function redraw() {
     }
     context.stroke();
 }
+
+const observer = new ResizeObserver(() =>{
+    rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio;
+    canvas.width = rect.width*dpr;
+    canvas.height = rect.height*dpr;
+    redraw();
+});
+observer.observe(canvas.parentElement);
