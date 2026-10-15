@@ -31,13 +31,13 @@ decreasesz.addEventListener("click", ()=>{
     if (canvasSize > 30) {
         const drawTools = document.getElementById("drawTools");
         canvasSize -= 10;
-        drawTools.style.fontSize = canvasSize.toString() + "vh";
+        drawTools.style.fontSize = canvasSize.toString() + "vmin";
     }
 });
 increasesz.addEventListener("click", ()=>{
     if (canvasSize < 70) {
         const drawTools = document.getElementById("drawTools");
         canvasSize += 10;
-        drawTools.style.fontSize = canvasSize.toString() + "vh";
+        drawTools.style.fontSize = canvasSize.toString() + "vmin";
     }
 });
