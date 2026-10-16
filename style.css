@@ -24,7 +24,7 @@ body {
     left: 10%;
     transform: translateY(-50%);
     z-index: 3;
-   /* visibility: hidden;*/
+    visibility: hidden;
 }
 #settingsbg {
     display: block;
