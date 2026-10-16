@@ -1,5 +1,6 @@
 const canvas = document.getElementById("canvasA");
 const context = canvas.getContext('2d');
+const settingscanvas = document.getElementById("settingscanvas");
 let rect = canvas.getBoundingClientRect();
 let pos, mid;
 let isDrawing = false;
@@ -57,11 +58,60 @@ function redraw() {
     context.stroke();
 }
 
-const observer = new ResizeObserver(() =>{
+function drawStrokeSize() {
+    const settingscanvas = document.getElementById("settingscanvas");
+    const cxt = settingscanvas.getContext("2d");
+    const w = settingscanvas.width;
+    const h = settingscanvas.height;
+    cxt.beginPath();
+    cxt.lineWidth = 4;
+    cxt.lineCap = "round";
+    cxt.lineJoin = "round";
+    cxt.strokeStyle = strokeColor;
+    cxt.moveTo(0.26*w, 0.6*h);
+    cxt.lineTo(0.74*w, 0.6*h);
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.lineWidth = 6;
+    cxt.lineCap = "round";
+    cxt.lineJoin = "round";
+    cxt.strokeStyle = strokeColor;
+    cxt.moveTo(0.26*w, 0.7*h);
+    cxt.lineTo(0.74*w, 0.7*h);
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.lineWidth = 8;
+    cxt.lineCap = "round";
+    cxt.lineJoin = "round";
+    cxt.strokeStyle = strokeColor;
+    cxt.moveTo(0.26*w, 0.8*h);
+    cxt.lineTo(0.74*w, 0.8*h);
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.lineWidth = 10;
+    cxt.lineCap = "round";
+    cxt.lineJoin = "round";
+    cxt.strokeStyle = strokeColor;
+    cxt.moveTo(0.26*w, 0.9*h);
+    cxt.lineTo(0.74*w, 0.9*h);
+    cxt.stroke();
+}
+
+const canvasobserver = new ResizeObserver(() =>{
     rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio;
     canvas.width = rect.width*dpr;
     canvas.height = rect.height*dpr;
     redraw();
 });
-observer.observe(canvas.parentElement);
+canvasobserver.observe(canvas.parentElement);
+
+const settingsobserver = new ResizeObserver(() =>{
+    const settingscanvas = document.getElementById("settingscanvas");
+    const r = settingscanvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio;
+    settingscanvas.width = r.width*dpr;
+    settingscanvas.height = r.height*dpr;
+    drawStrokeSize();
+});
+settingsobserver.observe(settingscanvas.parentElement);
