@@ -74,7 +74,7 @@ settings.addEventListener("mouseout", ()=>{
 
 decrease.addEventListener("mouseover", ()=>{
     const decreaseimg = document.getElementById("decreaseimg");
-    decreaseimg.style.filter = "brightness(85%)";
+    decreaseimg.style.filter = "brightness(70%)";
 });
 decrease.addEventListener("mouseout", ()=>{
     const decreaseimg = document.getElementById("decreaseimg");
@@ -83,7 +83,7 @@ decrease.addEventListener("mouseout", ()=>{
 
 increase.addEventListener("mouseover", ()=>{
     const increaseimg = document.getElementById("increaseimg");
-    increaseimg.style.filter = "brightness(85%)";
+    increaseimg.style.filter = "brightness(70%)";
 });
 increase.addEventListener("mouseout", ()=>{
     const increaseimg = document.getElementById("increaseimg");
@@ -92,11 +92,11 @@ increase.addEventListener("mouseout", ()=>{
 
 previous.addEventListener("mouseover", ()=>{
     const previousimg = document.getElementById("previousimg");
-    previousimg.style.filter = "brightness(85%)";
+    previousimg.style.filter = "brightness(70%)";
 });
 previous.addEventListener("mouseout", ()=>{
     const previousimg = document.getElementById("previousimg");
-    previousimg.style.filter = "brightness(100%)";
+    previousimg.style.filter = "brightness(70%)";
 });
 
 next.addEventListener("mouseover", ()=>{
