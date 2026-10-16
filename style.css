@@ -11,14 +11,94 @@
 body {
     margin: 0;
 }
-#settingspage {
-    width: 20vmax;
+#centersettings {
     position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+#settingspage {
+    position: relative;
+    width: 20vmax;
+    height: 25vmax;
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
     z-index: 3;
-    visibility: hidden;
+   /* visibility: hidden;*/
+}
+#settingsbg {
+    display: block;
+    width: 100%;
+}
+#black {
+    position: absolute;
+    background-color: #1b1b1b;
+    top: 8%;
+    left: 9.1%;
+    width: 17%;
+    height: 13.4%;
+}
+#red {
+    position: absolute;
+    background-color: #ff3131;
+    top: 8%;
+    left: 30.7%;
+    width: 17%;
+    height: 13.4%;
+}
+#green {
+    position: absolute;
+    background-color: #00bf63;
+    top: 8%;
+    left: 52.3%;
+    width: 17%;
+    height: 13.4%;
+}
+#yellow {
+    position: absolute;
+    background-color: #ffde59;
+    top: 8%;
+    left: 73.8%;
+    width: 17%;
+    height: 13.4%;
+}
+#white {
+    position: absolute;
+    background-color: #ffffff;
+    top: 27.1%;
+    left: 9.1%;
+    width: 17%;
+    height: 13.4%;
+}
+#blue {
+    position: absolute;
+    background-color: #38b6ff;
+    top: 27.1%;
+    left: 30.7%;
+    width: 17%;
+    height: 13.4%;
+}
+#pink {
+    position: absolute;
+    background-color: #ff66c4;
+    top: 27.1%;
+    left: 52.3%;
+    width: 17%;
+    height: 13.4%;
+}
+#brown {
+    position: absolute;
+    background-color: #9f5139;
+    top: 27.1%;
+    left: 73.8%;
+    width: 17%;
+    height: 13.4%;
+}
+.colors {
+    border: 0.3vmax solid #083b88;
+    border-radius: 1vmax;
+    z-index: 4;
+    cursor: pointer;
 }
 #wrapper {
     display: flex;
@@ -58,15 +138,18 @@ body {
     display: flex;
     justify-content: center;
     height: 0.22em;
+    gap: 0.023em;
     flex-shrink: 0;
     position: relative;
 }
 #guidelines img, #undo img, #settings img, #resize img{
     width: 100%;
     height: 100%;
+    margin: 0;
 }
 #buttons button{
     background: transparent;
+    padding: 0;
     border: none;
 }
 #guidelines, #undo, #settings, #decrease, #increase{
