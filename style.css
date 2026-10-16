@@ -142,7 +142,7 @@ body {
     flex-shrink: 0;
     position: relative;
 }
-#guidelines img, #undo img, #settings img, #resize img{
+#guidelines img, #undo img, #settings img{
     width: 100%;
     height: 100%;
     margin: 0;
@@ -158,23 +158,37 @@ body {
 #resize {
     display: flex;
     position: relative;
+    height: 100%;
 }
-#decrease {
+#resizebtn {
+    position: relative;
+    height: 100%;
+}
+#resizeimg {
+    position: relative;
+    height: 100%;
+}
+#decreaseimg, #decrease {
     position: absolute;
-    top: 22%;
-    left: 45%;
-    width: 22%;
-    height: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 48.6%;
+    width: 17%;
+    height: 11.5%;
     cursor: pointer;
 }
-#increase {
+#increaseimg, #increase {
     position: absolute;
-    top: 22%;
-    left: 68%;
-    width: 22%;
-    height: 55%
+    top: 50%;
+    transform: translateY(-50%);
+    left: 73.6%;
+    width: 17%;
+    height: 38.7%;
+    cursor: pointer;
 }
-
+#decrease, #increase {
+    z-index: 2;
+}
 #canvasRow {
     display: flex;
     align-items: center;

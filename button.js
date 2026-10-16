@@ -1,8 +1,8 @@
 const guidelines = document.getElementById("guidelines");
 const undo = document.getElementById("undo");
 const settings = document.getElementById("settings");
-const decreasesz = document.getElementById("decrease");
-const increasesz = document.getElementById("increase");
+const decrease = document.getElementById("decrease");
+const increase = document.getElementById("increase");
 
 const previous = document.getElementById("previous");
 const next = document.getElementById("next");
@@ -29,14 +29,15 @@ settings.addEventListener("click", ()=>{
         settingsv = 0;
     }
 });
-decreasesz.addEventListener("click", ()=>{
+decrease.addEventListener("click", ()=>{
+    console.log("e");
     if (canvasSize > 30) {
         const drawTools = document.getElementById("drawTools");
         canvasSize -= 10;
         drawTools.style.fontSize = canvasSize.toString() + "vmin";
     }
 });
-increasesz.addEventListener("click", ()=>{
+increase.addEventListener("click", ()=>{
     if (canvasSize < 70) {
         const drawTools = document.getElementById("drawTools");
         canvasSize += 10;
@@ -46,7 +47,7 @@ increasesz.addEventListener("click", ()=>{
 
 guidelines.addEventListener("mouseover", ()=>{
     const guidelinesimg = document.getElementById("guidelinesimg");
-    guidelinesimg.style.filter = "brightness(80%)";
+    guidelinesimg.style.filter = "brightness(85%)";
 });
 guidelines.addEventListener("mouseout", ()=>{
     const guidelinesimg = document.getElementById("guidelinesimg");
@@ -55,7 +56,7 @@ guidelines.addEventListener("mouseout", ()=>{
 
 undo.addEventListener("mouseover", ()=>{
     const undoimg = document.getElementById("undoimg");
-    undoimg.style.filter = "brightness(80%)";
+    undoimg.style.filter = "brightness(85%)";
 });
 undo.addEventListener("mouseout", ()=>{
     const undoimg = document.getElementById("undoimg");
@@ -64,16 +65,34 @@ undo.addEventListener("mouseout", ()=>{
 
 settings.addEventListener("mouseover", ()=>{
     const settingsimg = document.getElementById("settingsimg");
-    settingsimg.style.filter = "brightness(80%)";
+    settingsimg.style.filter = "brightness(85%)";
 });
 settings.addEventListener("mouseout", ()=>{
     const settingsimg = document.getElementById("settingsimg");
     settingsimg.style.filter = "brightness(100%)";
 });
 
+decrease.addEventListener("mouseover", ()=>{
+    const decreaseimg = document.getElementById("decreaseimg");
+    decreaseimg.style.filter = "brightness(85%)";
+});
+decrease.addEventListener("mouseout", ()=>{
+    const decreaseimg = document.getElementById("decreaseimg");
+    decreaseimg.style.filter = "brightness(100%)";
+});
+
+increase.addEventListener("mouseover", ()=>{
+    const increaseimg = document.getElementById("increaseimg");
+    increaseimg.style.filter = "brightness(85%)";
+});
+increase.addEventListener("mouseout", ()=>{
+    const increaseimg = document.getElementById("increaseimg");
+    increaseimg.style.filter = "brightness(100%)";
+});
+
 previous.addEventListener("mouseover", ()=>{
     const previousimg = document.getElementById("previousimg");
-    previousimg.style.filter = "brightness(80%)";
+    previousimg.style.filter = "brightness(85%)";
 });
 previous.addEventListener("mouseout", ()=>{
     const previousimg = document.getElementById("previousimg");
@@ -82,7 +101,7 @@ previous.addEventListener("mouseout", ()=>{
 
 next.addEventListener("mouseover", ()=>{
     const nextimg = document.getElementById("nextimg");
-    nextimg.style.filter = "brightness(80%)";
+    nextimg.style.filter = "brightness(85%)";
 });
 next.addEventListener("mouseout", ()=>{
     const nextimg = document.getElementById("nextimg");
