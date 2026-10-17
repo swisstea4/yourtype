@@ -1,4 +1,4 @@
-const canvas = document.getElementById("canvasA");
+const canvas = document.getElementById("canvas");
 const context = canvas.getContext('2d');
 const settingscanvas = document.getElementById("settingscanvas");
 let rect = canvas.getBoundingClientRect();
