@@ -58,6 +58,45 @@ increase.addEventListener("click", ()=>{
     }
 });
 
+
+black.addEventListener("click", ()=>{
+    strokeColor = "#1b1b1b";
+});
+red.addEventListener("click", ()=>{
+    strokeColor = "#ff3131";
+});
+green.addEventListener("click", ()=>{
+    strokeColor = "#00bf63";
+});
+yellow.addEventListener("click", ()=>{
+    strokeColor = "#ffde59";
+});
+white.addEventListener("click", ()=>{
+    strokeColor = "#ffffff";
+});
+blue.addEventListener("click", ()=>{
+    strokeColor = "#38b6ff";
+});
+pink.addEventListener("click", ()=>{
+    strokeColor = "#ff66c4";
+});
+brown.addEventListener("click", ()=>{
+    strokeColor = "#9f5139";
+});
+
+size1.addEventListener("click", ()=>{
+    strokeSize = 4;
+});
+size2.addEventListener("click", ()=>{
+    strokeSize = 6;
+});
+size3.addEventListener("click", ()=>{
+    strokeSize = 8;
+});
+size4.addEventListener("click", ()=>{
+    strokeSize = 10;
+});
+
 guidelines.addEventListener("pointerenter", ()=>{
     const guidelinesimg = document.getElementById("guidelinesimg");
     guidelinesimg.style.filter = "brightness(85%)";
@@ -114,47 +153,87 @@ previous.addEventListener("pointerleave", ()=>{
 
 next.addEventListener("pointerenter", ()=>{
     const nextimg = document.getElementById("nextimg");
-    nextimg.style.filter = "brightness(85%)";
+    nextimg.style.filter = "brightness(70%)";
 });
 next.addEventListener("pointerleave", ()=>{
     const nextimg = document.getElementById("nextimg");
     nextimg.style.filter = "brightness(100%)";
 });
 
-black.addEventListener("click", ()=>{
-    strokeColor = "#1b1b1b";
+black.addEventListener("pointerenter", ()=>{
+    black.style.filter = "brightness(120%)";
 });
-red.addEventListener("click", ()=>{
-    strokeColor = "#ff3131";
+black.addEventListener("pointerleave", ()=>{
+    black.style.filter = "brightness(100%)";
 });
-green.addEventListener("click", ()=>{
-    strokeColor = "#00bf63";
+red.addEventListener("pointerenter", ()=>{
+    red.style.filter = "brightness(120%)";
 });
-yellow.addEventListener("click", ()=>{
-    strokeColor = "#ffde59";
+red.addEventListener("pointerleave", ()=>{
+    red.style.filter = "brightness(100%)";
 });
-white.addEventListener("click", ()=>{
-    strokeColor = "#ffffff";
+green.addEventListener("pointerenter", ()=>{
+    green.style.filter = "brightness(120%)";
 });
-blue.addEventListener("click", ()=>{
-    strokeColor = "#38b6ff";
+green.addEventListener("pointerleave", ()=>{
+    green.style.filter = "brightness(100%)";
 });
-pink.addEventListener("click", ()=>{
-    strokeColor = "#ff66c4";
+yellow.addEventListener("pointerenter", ()=>{
+    yellow.style.filter = "brightness(120%)";
 });
-brown.addEventListener("click", ()=>{
-    strokeColor = "#9f5139";
+yellow.addEventListener("pointerleave", ()=>{
+    yellow.style.filter = "brightness(100%)";
+});
+white.addEventListener("pointerenter", ()=>{
+    white.style.filter = "brightness(120%)";
+});
+white.addEventListener("pointerleave", ()=>{
+    white.style.filter = "brightness(100%)";
+});
+blue.addEventListener("pointerenter", ()=>{
+    blue.style.filter = "brightness(120%)";
+});
+blue.addEventListener("pointerleave", ()=>{
+    blue.style.filter = "brightness(100%)";
+});
+pink.addEventListener("pointerenter", ()=>{
+    pink.style.filter = "brightness(120%)";
+});
+pink.addEventListener("pointerleave", ()=>{
+    pink.style.filter = "brightness(100%)";
+});
+brown.addEventListener("pointerenter", ()=>{
+    brown.style.filter = "brightness(120%)";
+});
+brown.addEventListener("pointerleave", ()=>{
+    brown.style.filter = "brightness(100%)";
 });
 
-size1.addEventListener("click", ()=>{
-    strokeSize = 4;
+size1.addEventListener("pointerenter", ()=>{
+    size1.style.background = "rgba(255, 255, 255, 0.1)";
+
 });
-size2.addEventListener("click", ()=>{
-    strokeSize = 6;
+size1.addEventListener("pointerleave", ()=>{
+    size1.style.background = "none";
 });
-size3.addEventListener("click", ()=>{
-    strokeSize = 8;
+size2.addEventListener("pointerenter", ()=>{
+    size2.style.background = "rgba(255, 255, 255, 0.1)";
+
 });
-size4.addEventListener("click", ()=>{
-    strokeSize = 10;
+size2.addEventListener("pointerleave", ()=>{
+    size2.style.background = "none";
+});
+size3.addEventListener("pointerenter", ()=>{
+    size3.style.background = "rgba(255, 255, 255, 0.1)";
+
+});
+size3.addEventListener("pointerleave", ()=>{
+    size3.style.background = "none";
+});
+size4.addEventListener("pointerenter", ()=>{
+    size4.style.background = "rgba(255, 255, 255, 0.1)";
+
+});
+size4.addEventListener("pointerleave", ()=>{
+    size4.style.background = "none";
 });

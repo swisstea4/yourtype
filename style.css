@@ -43,43 +43,47 @@ body {
     left: 25%;
     top: 59%;
     width: 50%;
-    height: 4px;
+    height: 5px;
     cursor: pointer;
     background: transparent;
     border: none;
+    padding: 0;
     z-index: 2;
 }
 #size2 {
     position: absolute;
     left: 25%;
     top: 69%;
-    width: 50%;
+    width: 50.1%;
     height: 6px;
     cursor: pointer;
     background: transparent;
     border: none;
+    padding: 0;
     z-index: 2;
 }
 #size3 {
     position: absolute;
     left: 25%;
     top: 79%;
-    width: 50%;
+    width: 50.5%;
     height: 8px;
     cursor: pointer;
     background: transparent;
     border: none;
+    padding: 0;
     z-index: 2;
 }
 #size4 {
     position: absolute;
-    left: 25%;
-    top: 89%;
-    width: 50%;
+    left: 24.2%;
+    top: 88.5%;
+    width: 60%;
     height: 10px;
     cursor: pointer;
     background: transparent;
     border: none;
+    padding: 0;
     z-index: 2;
 }
 #black {
