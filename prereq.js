@@ -19,43 +19,48 @@ function getpos(original) {
     };
 }
 function normalize(original) {
-    return {x: original.x/canvas.width, y : original.y/canvas.height};
+    let den = {...original};
+    den.x = original.x/canvas.width;
+    den.y = original.y/canvas.height;
+    return den;
 }
 function denormalize(original) {
-    return {x: original.x*canvas.width, y : original.y*canvas.height};
+    let den = {...original};
+    den.x = original.x*canvas.width;
+    den.y = original.y*canvas.height;
+    return den;
 }
 function beginPath(prev) {
     context.beginPath();
-    context.lineWidth = strokeSize;
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.strokeStyle = strokeColor;
-
-    if (prev !== null) {
-        context.moveTo(prev.x, prev.y);
-    }
+    context.moveTo(prev.x, prev.y);
+    context.strokeStyle = prev.color;
+    context.lineWidth = prev.size;
 }
 function redraw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    beginPath(null);
     for (const stroke of strokes) {
         if (stroke.length == 0) continue;
         let pos = denormalize(stroke[0]);
+        beginPath(pos);
         let mid = pos;
         for (let newPos of stroke) {
             newPos = denormalize(newPos);
-            context.moveTo(mid.x, mid.y);
+            beginPath(mid);
             const newMid = {
                 x : (pos.x + newPos.x)/2,
                 y : (pos.y + newPos.y)/2
             }
             context.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
+            context.stroke();
             pos = newPos;
             mid = newMid;
         }
+        beginPath(mid);
         context.lineTo(pos.x, pos.y);
+        context.stroke();
     }
-    context.stroke();
 }
 
 function drawStrokeSize() {
@@ -67,7 +72,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 4;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = strokeColor;
+    cxt.strokeStyle = "#1b1b1b";
     cxt.moveTo(0.26*w, 0.6*h);
     cxt.lineTo(0.74*w, 0.6*h);
     cxt.stroke();
@@ -75,7 +80,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 6;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = strokeColor;
+    cxt.strokeStyle = "#1b1b1b";;
     cxt.moveTo(0.26*w, 0.7*h);
     cxt.lineTo(0.74*w, 0.7*h);
     cxt.stroke();
@@ -83,7 +88,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 8;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = strokeColor;
+    cxt.strokeStyle = "#1b1b1b";;
     cxt.moveTo(0.26*w, 0.8*h);
     cxt.lineTo(0.74*w, 0.8*h);
     cxt.stroke();
@@ -91,7 +96,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 10;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = strokeColor;
+    cxt.strokeStyle = "#1b1b1b";;
     cxt.moveTo(0.26*w, 0.9*h);
     cxt.lineTo(0.74*w, 0.9*h);
     cxt.stroke();

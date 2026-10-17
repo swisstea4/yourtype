@@ -6,6 +6,20 @@ const increase = document.getElementById("increase");
 
 const previous = document.getElementById("previous");
 const next = document.getElementById("next");
+
+const black = document.getElementById("black");
+const red = document.getElementById("red");
+const green = document.getElementById("green");
+const yellow = document.getElementById("yellow");
+const white = document.getElementById("white");
+const blue = document.getElementById("blue");
+const pink = document.getElementById("pink");
+const brown = document.getElementById("brown");
+
+const size1 = document.getElementById("size1");
+const size2 = document.getElementById("size2");
+const size3 = document.getElementById("size3");
+const size4 = document.getElementById("size4");
 let canvasc = 0;
 let settingsv = 0;
 guidelines.addEventListener("click", ()=>{
@@ -30,7 +44,6 @@ settings.addEventListener("click", ()=>{
     }
 });
 decrease.addEventListener("click", ()=>{
-    console.log("e");
     if (canvasSize > 30) {
         const drawTools = document.getElementById("drawTools");
         canvasSize -= 10;
@@ -106,4 +119,42 @@ next.addEventListener("pointerenter", ()=>{
 next.addEventListener("pointerleave", ()=>{
     const nextimg = document.getElementById("nextimg");
     nextimg.style.filter = "brightness(100%)";
+});
+
+black.addEventListener("click", ()=>{
+    strokeColor = "#1b1b1b";
+});
+red.addEventListener("click", ()=>{
+    strokeColor = "#ff3131";
+});
+green.addEventListener("click", ()=>{
+    strokeColor = "#00bf63";
+});
+yellow.addEventListener("click", ()=>{
+    strokeColor = "#ffde59";
+});
+white.addEventListener("click", ()=>{
+    strokeColor = "#ffffff";
+});
+blue.addEventListener("click", ()=>{
+    strokeColor = "#38b6ff";
+});
+pink.addEventListener("click", ()=>{
+    strokeColor = "#ff66c4";
+});
+brown.addEventListener("click", ()=>{
+    strokeColor = "#9f5139";
+});
+
+size1.addEventListener("click", ()=>{
+    strokeSize = 4;
+});
+size2.addEventListener("click", ()=>{
+    strokeSize = 6;
+});
+size3.addEventListener("click", ()=>{
+    strokeSize = 8;
+});
+size4.addEventListener("click", ()=>{
+    strokeSize = 10;
 });
