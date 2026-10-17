@@ -97,6 +97,45 @@ size4.addEventListener("click", ()=>{
     strokeSize = 10;
 });
 
+function goLeft() {
+    if (currentLetter > 0) {
+        const lettershow = document.getElementById("letter");
+        drawnletters[letters[currentLetter]] = strokes;
+        currentLetter--;
+        if (!(letters[currentLetter] in drawnletters)) {
+            drawnletters[letters[currentLetter]] = [];
+        }
+        lettershow.textContent = letters[currentLetter];
+        strokes = drawnletters[letters[currentLetter]];
+        redraw();
+    }
+};
+function goRight() {
+    if (currentLetter < letters.length-1) {
+        const lettershow = document.getElementById("letter");
+        drawnletters[letters[currentLetter]] = strokes;
+        currentLetter++;
+        if (!(letters[currentLetter] in drawnletters)) {
+            drawnletters[letters[currentLetter]] = [];
+        }
+        lettershow.textContent = letters[currentLetter];
+        strokes = drawnletters[letters[currentLetter]];
+        redraw();
+    }
+}
+previous.addEventListener("click", goLeft);
+document.addEventListener("keydown", (event)=>{
+    if (event.key == "ArrowLeft") {
+        goLeft();
+    }
+});
+next.addEventListener("click", goRight);
+document.addEventListener("keydown", (event)=>{
+    if (event.key == "ArrowRight") {
+        goRight();
+    }
+});
+
 guidelines.addEventListener("pointerenter", ()=>{
     const guidelinesimg = document.getElementById("guidelinesimg");
     guidelinesimg.style.filter = "brightness(85%)";
