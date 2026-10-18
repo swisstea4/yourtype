@@ -34,6 +34,11 @@ canvas.addEventListener("pointermove", (event)=>{
 canvas.addEventListener("pointerup", ()=>{
     if (!isDrawing) return;
     isDrawing = false;
+    if (strokes[strokes.length-1].length == 1) {
+        beginPath(pos);
+        context.arc(pos.x, pos.y, strokeSize/2, 0, 2*Math.PI);
+        context.fill();
+    }
     beginPath(mid);
     context.lineTo(pos.x, pos.y);
     context.stroke();
