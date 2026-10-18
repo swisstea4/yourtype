@@ -135,6 +135,11 @@ document.addEventListener("keydown", (event)=>{
         goRight();
     }
 });
+document.addEventListener("keydown", (event)=>{
+    if (event.key == "Enter") {
+        goRight();
+    }
+});
 
 guidelines.addEventListener("pointerenter", ()=>{
     const guidelinesimg = document.getElementById("guidelinesimg");
@@ -250,29 +255,154 @@ brown.addEventListener("pointerleave", ()=>{
 
 size1.addEventListener("pointerenter", ()=>{
     size1.style.background = "rgba(255, 255, 255, 0.1)";
-
 });
 size1.addEventListener("pointerleave", ()=>{
     size1.style.background = "none";
 });
 size2.addEventListener("pointerenter", ()=>{
     size2.style.background = "rgba(255, 255, 255, 0.1)";
-
 });
 size2.addEventListener("pointerleave", ()=>{
     size2.style.background = "none";
 });
 size3.addEventListener("pointerenter", ()=>{
     size3.style.background = "rgba(255, 255, 255, 0.1)";
-
 });
 size3.addEventListener("pointerleave", ()=>{
     size3.style.background = "none";
 });
 size4.addEventListener("pointerenter", ()=>{
     size4.style.background = "rgba(255, 255, 255, 0.1)";
-
 });
 size4.addEventListener("pointerleave", ()=>{
     size4.style.background = "none";
+});
+
+guidelines.addEventListener("pointerdown", ()=>{
+    const guidelinesimg = document.getElementById("guidelinesimg");
+    guidelinesimg.style.filter = "brightness(80%)";
+});
+guidelines.addEventListener("pointerup", ()=>{
+    const guidelinesimg = document.getElementById("guidelinesimg");
+    guidelinesimg.style.filter = "brightness(85%)";
+});
+undo.addEventListener("pointerdown", ()=>{
+    const undoimg = document.getElementById("undoimg");
+    undoimg.style.filter = "brightness(80%)";
+});
+undo.addEventListener("pointerup", ()=>{
+    const undoimg = document.getElementById("undoimg");
+    undoimg.style.filter = "brightness(85%)";
+});
+settings.addEventListener("pointerdown", ()=>{
+    const settingsimg = document.getElementById("settingsimg");
+    settingsimg.style.filter = "brightness(80%)";
+});
+settings.addEventListener("pointerup", ()=>{
+    const settingsimg = document.getElementById("settingsimg");
+    settingsimg.style.filter = "brightness(85%)";
+});
+decrease.addEventListener("pointerdown", ()=>{
+    const decreaseimg = document.getElementById("decreaseimg");
+    decreaseimg.style.filter = "brightness(50%)";
+});
+decrease.addEventListener("pointerup", ()=>{
+    const decreaseimg = document.getElementById("decreaseimg");
+    decreaseimg.style.filter = "brightness(70%)";
+});
+increase.addEventListener("pointerdown", ()=>{
+    const increaseimg = document.getElementById("increaseimg");
+    increaseimg.style.filter = "brightness(50%)";
+});
+increase.addEventListener("pointerup", ()=>{
+    const increaseimg = document.getElementById("increaseimg");
+    increaseimg.style.filter = "brightness(70%)";
+});
+previous.addEventListener("pointerdown", ()=>{
+    const previousimg = document.getElementById("previousimg");
+    previousimg.style.filter = "brightness(50%)";
+});
+previous.addEventListener("pointerup", ()=>{
+    const previousimg = document.getElementById("previousimg");
+    previousimg.style.filter = "brightness(70%)";
+});
+next.addEventListener("pointerdown", ()=>{
+    const nextimg = document.getElementById("nextimg");
+    nextimg.style.filter = "brightness(50%)";
+});
+next.addEventListener("pointerup", ()=>{
+    const nextimg = document.getElementById("nextimg");
+    nextimg.style.filter = "brightness(70%)";
+});
+black.addEventListener("pointerdown", ()=>{
+    black.style.filter = "brightness(140%)";
+});
+black.addEventListener("pointerup", ()=>{
+    black.style.filter = "brightness(120%)";
+});
+red.addEventListener("pointerdown", ()=>{
+    red.style.filter = "brightness(140%)";
+});
+red.addEventListener("pointerup", ()=>{
+    red.style.filter = "brightness(120%)";
+});
+green.addEventListener("pointerdown", ()=>{
+    green.style.filter = "brightness(140%)";
+});
+green.addEventListener("pointerup", ()=>{
+    green.style.filter = "brightness(120%)";
+});
+yellow.addEventListener("pointerdown", ()=>{
+    yellow.style.filter = "brightness(140%)";
+});
+yellow.addEventListener("pointerup", ()=>{
+    yellow.style.filter = "brightness(120%)";
+});
+white.addEventListener("pointerdown", ()=>{
+    white.style.filter = "brightness(140%)";
+});
+white.addEventListener("pointerup", ()=>{
+    white.style.filter = "brightness(120%)";
+});
+blue.addEventListener("pointerdown", ()=>{
+    blue.style.filter = "brightness(140%)";
+});
+blue.addEventListener("pointerup", ()=>{
+    blue.style.filter = "brightness(120%)";
+});
+pink.addEventListener("pointerdown", ()=>{
+    pink.style.filter = "brightness(140%)";
+});
+pink.addEventListener("pointerup", ()=>{
+    pink.style.filter = "brightness(120%)";
+});
+brown.addEventListener("pointerdown", ()=>{
+    brown.style.filter = "brightness(140%)";
+});
+brown.addEventListener("pointerup", ()=>{
+    brown.style.filter = "brightness(120%)";
+});
+size1.addEventListener("pointerdown", ()=>{
+    size1.style.background = "rgba(255, 255, 255, 0.2)";
+});
+size1.addEventListener("pointerup", ()=>{
+    size1.style.background = "rgba(255, 255, 255, 0.1)";
+});
+size2.addEventListener("pointerdown", ()=>{
+    size2.style.background = "rgba(255, 255, 255, 0.2)";
+});
+size2.addEventListener("pointerup", ()=>{
+    size2.style.background = "rgba(255, 255, 255, 0.1)";
+});
+size3.addEventListener("pointerdown", ()=>{
+    size3.style.background = "rgba(255, 255, 255, 0.2)";
+});
+size3.addEventListener("pointerup", ()=>{
+    size3.style.background = "rgba(255, 255, 255, 0.1)";
+});
+size4.addEventListener("pointerdown", ()=>{
+    size4.style.background = "rgba(255, 255, 255, 0.2)";
+});
+size4.addEventListener("pointerup", ()=>{
+    size4.style.background = "rgba(255, 255, 255, 0.1)";
 });
