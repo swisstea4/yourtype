@@ -23,7 +23,7 @@ body {
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
-    z-index: 3;
+    z-index: 4;
     visibility: hidden;
     transition: width 0.2s ease, height 0.2s ease, visibility 0.2s ease allow-discrete;
 }
@@ -42,7 +42,7 @@ body {
     height: 100%;
     top: 0%;
     left: 0%;
-    z-index: 2;
+    z-index: 5;
 }
 #size1 {
     position: absolute;
@@ -54,7 +54,7 @@ body {
     background: transparent;
     border: none;
     padding: 0;
-    z-index: 2;
+    z-index: 6;
 }
 #size2 {
     position: absolute;
@@ -66,7 +66,7 @@ body {
     background: transparent;
     border: none;
     padding: 0;
-    z-index: 2;
+    z-index: 6;
 }
 #size3 {
     position: absolute;
@@ -78,7 +78,7 @@ body {
     background: transparent;
     border: none;
     padding: 0;
-    z-index: 2;
+    z-index: 6;
 }
 #size4 {
     position: absolute;
@@ -90,7 +90,7 @@ body {
     background: transparent;
     border: none;
     padding: 0;
-    z-index: 2;
+    z-index: 6;
 }
 #black {
     position: absolute;
@@ -159,7 +159,7 @@ body {
 .colors {
     border: 0.3vmax solid #083b88;
     border-radius: 1vmax;
-    z-index: 4;
+    z-index: 6;
     cursor: pointer;
 }
 #wrapper {
@@ -213,6 +213,7 @@ body {
 }
 #previous, #next {
     font-size: inherit;
+    z-index: 3;
 }
 #buttons {
     display: flex;
@@ -239,6 +240,7 @@ body {
     display: flex;
     position: relative;
     height: 100%;
+    z-index: 1;
 }
 #resizebtn {
     position: relative;
@@ -287,6 +289,7 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: right;
+    z-index: 1;
     transition: width 0.5s ease;
 }
 #canvasBG.no-transition {
@@ -302,6 +305,7 @@ body {
     object-fit: cover;
     object-position: right;
     display: none;
+    z-index: 1;
     transition: width 0.55s ease, display 0s allow-discrete;
 }
 #canvasbgtr.no-transition {
@@ -323,6 +327,14 @@ body {
     height: 95%;
     z-index: 2;
     touch-action: none;
+}
+#nextcoverup {
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    background-color: white;
+    left: 100%;
+    z-index: 2;
 }
 #previous, #next {
     background: transparent;

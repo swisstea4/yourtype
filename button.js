@@ -133,9 +133,9 @@ function goRight() {
     if (currentLetter == letters.length-1) return;
     const canvasbg = document.getElementById("canvasBG");
     const canvasbgtr = document.getElementById("canvasbgtr");
+    context.clearRect(0, 0, canvas.width, canvas.height);
     canvasbg.classList.toggle("wipe");
     canvasbgtr.classList.toggle("wipe");
-
     setTimeout(()=>{
         canvasbg.classList.add("no-transition");
         canvasbg.classList.remove("wipe");
@@ -146,16 +146,18 @@ function goRight() {
         canvasbgtr.classList.remove("wipe");
         canvasbgtr.offsetWidth;
         canvasbgtr.classList.remove("no-transition");
-    }, 500);
+    }, 550);
     const lettershow = document.getElementById("letter");
     drawnletters[letters[currentLetter]] = strokes;
     currentLetter++;
-    if (!(letters[currentLetter] in drawnletters)) {
-        drawnletters[letters[currentLetter]] = [];
-    }
-    lettershow.textContent = letters[currentLetter];
-    strokes = drawnletters[letters[currentLetter]];
-    redraw();
+        if (!(letters[currentLetter] in drawnletters)) {
+            drawnletters[letters[currentLetter]] = [];
+        }
+        lettershow.textContent = letters[currentLetter];
+        strokes = drawnletters[letters[currentLetter]];
+    setTimeout(()=>{
+        redraw();
+    }, 500);
 }
 previous.addEventListener("click", goLeft);
 document.addEventListener("keydown", (event)=>{
