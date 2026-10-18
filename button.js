@@ -122,6 +122,8 @@ function goLeft() {
     const canvasbg = document.getElementById("canvasBG");
     const canvasbgtl = document.getElementById("canvasbgtl");
     context.clearRect(0, 0, canvas.width, canvas.height);
+    canvasbg.style.objectPosition = "left";
+    canvasbg.style.right = "0%";
     canvasbg.classList.toggle("wipe");
     canvasbgtl.classList.toggle("wipe");
     setTimeout(()=>{
@@ -152,6 +154,8 @@ function goRight() {
     const canvasbg = document.getElementById("canvasBG");
     const canvasbgtr = document.getElementById("canvasbgtr");
     context.clearRect(0, 0, canvas.width, canvas.height);
+    canvasbg.style.objectPosition = "right";
+    canvasbg.style.removeProperty("right");
     canvasbg.classList.toggle("wipe");
     canvasbgtr.classList.toggle("wipe");
     setTimeout(()=>{
