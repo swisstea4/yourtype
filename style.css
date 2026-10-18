@@ -285,6 +285,34 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: right;
+    transition: width 0.5s ease;
+}
+#canvasBG.no-transition {
+    transition: none;
+}
+#canvasBG.wipe {
+    width: 0%;
+}
+#canvasbgtr {
+    position: absolute;
+    width: 210%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    display: none;
+    transition: width 0.55s ease, display 0s allow-discrete;
+}
+#canvasbgtr.no-transition {
+    transition: none;
+}
+#canvasbgtr.wipe {
+    width: 100%;
+    display: block;
+    @starting-style {
+        width: 210%;
+    }
 }
 #canvas {
     position: absolute;

@@ -118,30 +118,44 @@ size4.addEventListener("click", ()=>{
 });
 
 function goLeft() {
-    if (currentLetter > 0) {
-        const lettershow = document.getElementById("letter");
-        drawnletters[letters[currentLetter]] = strokes;
-        currentLetter--;
-        if (!(letters[currentLetter] in drawnletters)) {
-            drawnletters[letters[currentLetter]] = [];
-        }
-        lettershow.textContent = letters[currentLetter];
-        strokes = drawnletters[letters[currentLetter]];
-        redraw();
+    if (currentLetter == 0) return;
+    const lettershow = document.getElementById("letter");
+    drawnletters[letters[currentLetter]] = strokes;
+    currentLetter--;
+    if (!(letters[currentLetter] in drawnletters)) {
+        drawnletters[letters[currentLetter]] = [];
     }
+    lettershow.textContent = letters[currentLetter];
+    strokes = drawnletters[letters[currentLetter]];
+    redraw();
 };
 function goRight() {
-    if (currentLetter < letters.length-1) {
-        const lettershow = document.getElementById("letter");
-        drawnletters[letters[currentLetter]] = strokes;
-        currentLetter++;
-        if (!(letters[currentLetter] in drawnletters)) {
-            drawnletters[letters[currentLetter]] = [];
-        }
-        lettershow.textContent = letters[currentLetter];
-        strokes = drawnletters[letters[currentLetter]];
-        redraw();
+    if (currentLetter == letters.length-1) return;
+    const canvasbg = document.getElementById("canvasBG");
+    const canvasbgtr = document.getElementById("canvasbgtr");
+    canvasbg.classList.toggle("wipe");
+    canvasbgtr.classList.toggle("wipe");
+
+    setTimeout(()=>{
+        canvasbg.classList.add("no-transition");
+        canvasbg.classList.remove("wipe");
+        canvasbg.offsetWidth;
+        canvasbg.classList.remove("no-transition");
+
+        canvasbgtr.classList.add("no-transition");
+        canvasbgtr.classList.remove("wipe");
+        canvasbgtr.offsetWidth;
+        canvasbgtr.classList.remove("no-transition");
+    }, 500);
+    const lettershow = document.getElementById("letter");
+    drawnletters[letters[currentLetter]] = strokes;
+    currentLetter++;
+    if (!(letters[currentLetter] in drawnletters)) {
+        drawnletters[letters[currentLetter]] = [];
     }
+    lettershow.textContent = letters[currentLetter];
+    strokes = drawnletters[letters[currentLetter]];
+    redraw();
 }
 previous.addEventListener("click", goLeft);
 document.addEventListener("keydown", (event)=>{
