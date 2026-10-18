@@ -318,6 +318,28 @@ body {
         width: 210%;
     }
 }
+#canvasbgtl {
+    position: absolute;
+    width: 210%;
+    height: 100%;
+    right: 0%;
+    object-fit: cover;
+    object-position: left;
+    display: none;
+    z-index: 1;
+    transition: width 0.55s ease, display 0s allow-discrete;
+}
+#canvasbgtl.no-transition {
+    transition: none;
+}
+#canvasbgtl.wipe {
+    width: 100%;
+    display: block;
+    @starting-style {
+        width: 210%;
+        right: 0%;
+    }
+}
 #canvas {
     position: absolute;
     top: 50%;

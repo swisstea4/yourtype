@@ -119,6 +119,22 @@ size4.addEventListener("click", ()=>{
 
 function goLeft() {
     if (currentLetter == 0) return;
+    const canvasbg = document.getElementById("canvasBG");
+    const canvasbgtl = document.getElementById("canvasbgtl");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    canvasbg.classList.toggle("wipe");
+    canvasbgtl.classList.toggle("wipe");
+    setTimeout(()=>{
+        canvasbg.classList.add("no-transition");
+        canvasbg.classList.remove("wipe");
+        canvasbg.offsetWidth;
+        canvasbg.classList.remove("no-transition");
+
+        canvasbgtl.classList.add("no-transition");
+        canvasbgtl.classList.remove("wipe");
+        canvasbgtl.offsetWidth;
+        canvasbgtl.classList.remove("no-transition");
+    }, 550);
     const lettershow = document.getElementById("letter");
     drawnletters[letters[currentLetter]] = strokes;
     currentLetter--;
@@ -127,7 +143,9 @@ function goLeft() {
     }
     lettershow.textContent = letters[currentLetter];
     strokes = drawnletters[letters[currentLetter]];
-    redraw();
+    setTimeout(()=>{
+        redraw();
+    }, 500);
 };
 function goRight() {
     if (currentLetter == letters.length-1) return;
