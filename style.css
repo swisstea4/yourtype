@@ -18,13 +18,19 @@ body {
 }
 #settingspage {
     position: relative;
-    width: 20vmax;
-    height: 25vmax;
+    width: 0;
+    height: 0;
     top: 50%;
     left: 10%;
     transform: translateY(-50%);
     z-index: 3;
     visibility: hidden;
+    transition: width 0.1s ease, height 0.1s ease, visibility 0.2s ease allow-discrete;
+}
+#settingspage.show {
+    width: 20vmax;
+    height: 25vmax;
+    visibility: visible;
 }
 #settingsbg {
     display: block;
@@ -185,11 +191,29 @@ body {
     gap: 0.06em;
     justify-content: center;
     align-items: center;
+    transition: font-size 0.5s ease;
 }
-#drawTools, #previous, #next{
+#drawTools.size30 {
+    font-size: 30vmin;
+}
+#drawTools.size40 {
+    font-size: 40vmin;
+}
+#drawTools.size50 {
     font-size: 50vmin;
 }
-
+#drawTools.size60 {
+    font-size: 60vmin;
+}
+#drawTools.size70 {
+    font-size: 70vmin;
+}
+#drawTools{
+    font-size: 50vmin;
+}
+#previous, #next {
+    font-size: inherit;
+}
 #buttons {
     display: flex;
     justify-content: center;

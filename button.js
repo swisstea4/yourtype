@@ -3,6 +3,7 @@ const undo = document.getElementById("undo");
 const settings = document.getElementById("settings");
 const decrease = document.getElementById("decrease");
 const increase = document.getElementById("increase");
+const drawTools = document.getElementById("drawTools");
 
 const previous = document.getElementById("previous");
 const next = document.getElementById("next");
@@ -21,7 +22,8 @@ const size2 = document.getElementById("size2");
 const size3 = document.getElementById("size3");
 const size4 = document.getElementById("size4");
 let canvasc = 0;
-let settingsv = 0;
+drawTools.classList.toggle("size50");
+
 guidelines.addEventListener("click", ()=>{
     const canvasbg = document.getElementById("canvasBG");
     canvasc = (canvasc+1)%3;
@@ -34,30 +36,48 @@ undo.addEventListener("click",()=>{
 });
 settings.addEventListener("click", ()=>{
     const settingspage = document.getElementById("settingspage");
-    if (settingsv === 0) {
-        settingspage.style.visibility = "visible";
-        settingsv = 1;
-    }
-    else {
-        settingspage.style.visibility = "hidden";
-        settingsv = 0;
-    }
+    settingspage.classList.toggle("show");
 });
 decrease.addEventListener("click", ()=>{
-    if (canvasSize > 30) {
-        const drawTools = document.getElementById("drawTools");
-        canvasSize -= 10;
-        drawTools.style.fontSize = canvasSize.toString() + "vmin";
+    if (canvasSize == 30) return;
+    canvasSize -= 10;
+    if (canvasSize == 30) {
+        drawTools.classList.toggle("size40");
+        drawTools.classList.toggle("size30");
+    }
+    if (canvasSize == 40) {
+        drawTools.classList.toggle("size50");
+        drawTools.classList.toggle("size40");
+    }
+    if (canvasSize == 50) {
+        drawTools.classList.toggle("size60");
+        drawTools.classList.toggle("size50");
+    }
+    if (canvasSize == 60) {
+        drawTools.classList.toggle("size70");
+        drawTools.classList.toggle("size60");
     }
 });
 increase.addEventListener("click", ()=>{
-    if (canvasSize < 70) {
-        const drawTools = document.getElementById("drawTools");
-        canvasSize += 10;
-        drawTools.style.fontSize = canvasSize.toString() + "vmin";
+    if (canvasSize == 70) return;
+    canvasSize += 10;
+    if (canvasSize == 40) {
+        drawTools.classList.toggle("size30");
+        drawTools.classList.toggle("size40");
+    }
+    if (canvasSize == 50) {
+        drawTools.classList.toggle("size40");
+        drawTools.classList.toggle("size50");
+    }
+    if (canvasSize == 60) {
+        drawTools.classList.toggle("size50");
+        drawTools.classList.toggle("size60");
+    }
+    if (canvasSize == 70) {
+        drawTools.classList.toggle("size60");
+        drawTools.classList.toggle("size70");
     }
 });
-
 
 black.addEventListener("click", ()=>{
     strokeColor = "#1b1b1b";
