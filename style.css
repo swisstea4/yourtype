@@ -358,6 +358,14 @@ body {
     left: 100%;
     z-index: 2;
 }
+#previouscoverup {
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    background-color: white;
+    left: -110%;
+    z-index: 2;
+}
 #previous, #next {
     background: transparent;
     border: none;
