@@ -39,6 +39,7 @@ function beginPath(prev) {
     context.lineJoin = "round";
     context.moveTo(prev.x, prev.y);
     context.strokeStyle = prev.color;
+    context.fillStyle = prev.color;
     context.lineWidth = prev.size;
 }
 function redraw() {
