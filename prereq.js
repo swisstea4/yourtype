@@ -51,8 +51,8 @@ function redraw() {
             beginPath(pos);
             context.arc(pos.x, pos.y, strokeSize/2, 0, 2*Math.PI);
             context.fill();
+            continue;
         }
-        beginPath(pos);
         let mid = pos;
         for (let newPos of stroke) {
             newPos = denormalize(newPos);
