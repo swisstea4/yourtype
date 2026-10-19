@@ -42,6 +42,7 @@ canvas.addEventListener("pointerup", ()=>{
     beginPath(mid);
     context.lineTo(pos.x, pos.y);
     context.stroke();
+    console.log(strokes);
 });
 canvas.addEventListener("pointercancel", ()=>{
     isDrawing = false;
