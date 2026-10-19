@@ -47,6 +47,11 @@ function redraw() {
     for (const stroke of strokes) {
         if (stroke.length == 0) continue;
         let pos = denormalize(stroke[0]);
+        if (stroke.length == 1) {
+            beginPath(pos);
+            context.arc(pos.x, pos.y, strokeSize/2, 0, 2*Math.PI);
+            context.fill();
+        }
         beginPath(pos);
         let mid = pos;
         for (let newPos of stroke) {
