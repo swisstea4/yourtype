@@ -393,7 +393,8 @@ body {
     font-weight: normal;
     text-align: center;
     color: #1b1b1b;
-    font-size: 2vmax;
+    font-size: initial;
+    margin: none;
     width: fit-content;
     
     top: 70%;
