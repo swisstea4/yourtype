@@ -1,9 +1,10 @@
-const vectorw = 400;
-const vectorh = 400;
+let width = 100, height = 100;
+const scale = 1;
+const baseline = 0.66;
 function denormalize(pos) {
     let den = {...pos};
-    den.x *= vectorw;
-    den.y *= vectorh;
+    den.x *= width;
+    den.y *= height;
     den.x = Math.round(den.x*1000)/1000;
     den.y = Math.round(den.y*1000)/1000;
     return den;
@@ -44,13 +45,42 @@ function vectorpath(strokes) {
     return d;
 }
 
-function drawvector(strokes) {
-    let d = vectorpath(strokes);
-    d.slice(0, -1);
-    const svgpath = document.getElementById("svgpath");
-    svgpath.setAttribute("d", d);
-    console.log(svgpath);
+function vectorstyle(strokes) {
+    let strokeColor = strokes[0][0].color;
+    let strokeSize = strokes[0][0].size;
+    let style = "stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString();
+    return style;
 }
 
-let s = [[{x: 0.7193719765866874, y: 0.29891640866873065, color: '#1b1b1b', size: 4},{x: 0.7229102167182663, y: 0.2953781685371517, color: '#1b1b1b', size: 4},{x: 0.7264484568498453, y: 0.2953781685371517, color: '#1b1b1b', size: 4},{x: 0.7335250580495356, y: 0.2953781685371517, color: '#1b1b1b', size: 4},{x: 0.7441397784442725, y: 0.29183992840557277, color: '#1b1b1b', size: 4},{x: 0.7512162587074304, y: 0.29183992840557277, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.29183992840557277, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.2953781685371517, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.3024546488003096, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.30599288893188853, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.30953125, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.313069490131579, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.3166077302631579, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.32014597039473686, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.3236842105263158, color: '#1b1b1b', size: 4},{x: 0.7547544988390094, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7512162587074304, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7476780185758515, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7406015383126935, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7370632981811145, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7335250580495356, y: 0.32722245065789474, color: '#1b1b1b', size: 4},{x: 0.7299866969814242, y: 0.32722245065789474, color: '#1b1b1b', size: 4}]];
-drawvector(s);
+function setsize(strokes) {
+    let minx = 1, maxx = 0, miny = 1, maxy = 0;
+    for (const stroke of strokes) {
+        for (const point of stroke) {
+            minx = Math.min(minx, point.x);
+            maxx = Math.max(maxx, point.x);
+            miny = Math.min(miny, point.y);
+            maxy = Math.max(maxy, point.y);
+        }
+    }
+    width = (maxx-minx)*scale;
+    height = (maxy-miny)*scale;
+
+    let origin = {
+        x: minx,
+        y: miny
+    };
+    for (const stroke of strokes) {
+        for (let i = 0; i < stroke.length; i++) {
+            stroke[i].x -= origin.x;
+            stroke[i].y -= baseline;
+        }
+    }
+}
+
+function createvector(strokes, letter) {
+    const newsvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    newsvg.setAttribute("id", "svg" + letter);
+    setsize(strokes);
+    newsvg.setAttribute("width", width);
+    newsvg.setAttribute("height", height);
+}
