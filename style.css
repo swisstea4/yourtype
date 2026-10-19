@@ -213,6 +213,7 @@ body {
 }
 #previous, #next {
     font-size: inherit;
+    padding: 0;
     z-index: 3;
 }
 #buttons {
@@ -356,16 +357,24 @@ body {
     width: 110%;
     height: 100%;
     background-color: white;
+    display: none;
     left: 100%;
     z-index: 2;
+}
+#nextcoverup.show {
+    display: block;
 }
 #previouscoverup {
     position: absolute;
     width: 110%;
     height: 100%;
     background-color: white;
+    display: none;
     left: -110%;
     z-index: 2;
+}
+#previouscoverup.show {
+    display: block;
 }
 #previous, #next {
     background: transparent;
