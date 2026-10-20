@@ -16,8 +16,8 @@ body button {
 }
 #centersettings {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 #settingspage {
     position: relative;
@@ -391,15 +391,22 @@ body button {
     width: 100%;
     height: 100%;
 }
+
+#baseGuide {
+    position: absolute;
+    top: 62%;
+    width: 20%;
+    height: 60%;
+    left: 78%;
+    z-index: 3;    
+}
 #baseArrow {
     position: absolute;
-    top: 66%;
-    transform: translateY(-34%);
-    width: 20%;
-    left: 80%;
-    z-index: 3;
+    top: 0%;
+    left: 0%;
+    width: 100%;
 }
-#baseGuide {
+#guideText {
     position: absolute;
     font-family: "Gorditas";
     font-weight: normal;
@@ -408,26 +415,8 @@ body button {
     font-size: initial;
     margin: none;
     width: fit-content;
-    
-    top: 70%;
-    left: 85%;
+
+    left: 50%;
+    top: 20%;
     z-index: 3;
-}
-#close {
-    position: absolute;
-    width: 6%;
-    aspect-ratio: 1.004;
-    top: 60%;
-    left: 100%;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    z-index: 3;
-}
-#close img {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
 }
