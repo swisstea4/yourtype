@@ -11,6 +11,9 @@
 body {
     margin: 0;
 }
+body button {
+    -webkit-tap-highlight-color: transparent;
+}
 #centersettings {
     position: absolute;
     width: 100vw;
@@ -409,4 +412,22 @@ body {
     top: 70%;
     left: 85%;
     z-index: 3;
+}
+#close {
+    position: absolute;
+    width: 6%;
+    aspect-ratio: 1.004;
+    top: 60%;
+    left: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    z-index: 3;
+}
+#close img {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
 }
