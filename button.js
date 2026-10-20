@@ -8,6 +8,8 @@ const drawTools = document.getElementById("drawTools");
 const previous = document.getElementById("previous");
 const next = document.getElementById("next");
 
+const close = document.getElementById("close");
+
 const black = document.getElementById("black");
 const red = document.getElementById("red");
 const green = document.getElementById("green");
@@ -207,6 +209,14 @@ document.addEventListener("keydown", (event)=>{
     if (event.key == "Enter") {
         goRight();
     }
+});
+
+close.addEventListener("click", ()=>{
+    const baseArrow = document.getElementById("baseArrow");
+    const baseGuide = document.getElementById("baseGuide");
+    baseArrow.classList.toggle("hide");
+    baseGuide.classList.toggle("hide");
+    close.classList.toggle("hide");
 });
 
 guidelines.addEventListener("pointerenter", ()=>{

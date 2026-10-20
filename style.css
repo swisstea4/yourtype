@@ -398,6 +398,10 @@ body button {
     width: 20%;
     left: 80%;
     z-index: 3;
+    transition: width 0.2s ease;
+}
+#baseArrow.hide {
+    width: 0;
 }
 #baseGuide {
     position: absolute;
@@ -406,12 +410,17 @@ body button {
     text-align: center;
     color: #1b1b1b;
     font-size: initial;
-    margin: none;
     width: fit-content;
     
     top: 70%;
     left: 85%;
     z-index: 3;
+
+    transition: width 0.2s ease, font-size 0.2s ease;
+}
+#baseGuide.hide {
+    width: 0;
+    font-size: 0;
 }
 #close {
     position: absolute;
@@ -421,8 +430,13 @@ body button {
     left: 100%;
     background-color: transparent;
     border: none;
+    cursor: pointer;
     padding: 0;
     z-index: 3;
+    transition: width 0.2s;
+}
+#close.hide {
+    width: 0;
 }
 #close img {
     position: absolute;
