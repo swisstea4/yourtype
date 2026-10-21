@@ -1,4 +1,5 @@
-function createvector(strokes, letter) {
+function createvector(strokes1, letter) {
+    let strokes = structuredClone(strokes1);
     let width = 100, height = 100;
     const scale = 500;
     let baseline = 0.69491525423;
@@ -77,9 +78,6 @@ function createvector(strokes, letter) {
                 stroke[i].y -= origin.y;
                 stroke[i].x /= (maxx-minx);
                 stroke[i].y /= (maxy-miny);
-                if (stroke[i].x < 0 || stroke[i].y < 0) {
-                    console.log(stroke[i]);
-                }
             }
         }
         baseline = (baseline-origin.y)/(maxy-miny);
