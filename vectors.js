@@ -25,10 +25,6 @@ function createvector(strokes1, letter) {
         let d = "";
         if (stroke.length == 0) return d;
         let pos = denormalize(stroke[0]);
-        if (stroke.length == 1) {
-            // circle
-            return d;
-        }
         let mid = pos;
         for (let newPos of stroke) {
             newPos = denormalize(newPos);
@@ -44,6 +40,15 @@ function createvector(strokes1, letter) {
         d += moveto(mid);
         d += lineto(pos);
         return d;
+    }
+
+    function vectorcircle(stroke) {
+        let circle = "r=\"" + (stroke[0].size/2).toString() + "\" ";
+        let den = denormalize(stroke[0]);
+        circle += "cx=\"" + den.x.toString() + "\" ";
+        circle += "cy=\"" + den.y.toString() + "\" ";
+        circle += "fill=\"" + stroke[0].color + "\" ";
+        return circle;
     }
 
     function vectorstyle(stroke) {
@@ -93,14 +98,97 @@ function createvector(strokes1, letter) {
     
     for (let i = 0; i < strokes.length; i++) {
         let stroke = strokes[i];
-        let newpath = "<path id=\"svgpath" + letter + i.toString() + "\"";
-        newpath += "d=\""+vectorpath(stroke)+"\"";
-        newpath += "style=\"" + vectorstyle(stroke) + "\"";
-        newpath += "/>";
+        if (stroke.length == 1) {
+            let newcircle = "<circle id=\"svgpath" + letter + i.toString() + "\" ";
+            newcircle += vectorcircle(stroke);
+            newcircle += "/>";
+            
+            newsvg += newcircle;
+            console.log(newcircle);
+        }
+        else {
+            let newpath = "<path id=\"svgpath" + letter + i.toString() + "\"";
+            newpath += "d=\""+vectorpath(stroke)+"\"";
+            newpath += "style=\"" + vectorstyle(stroke) + "\"";
+            newpath += "/>";
 
-        newsvg += newpath;
+            newsvg += newpath;
+        }
     }
 
     newsvg += "</svg>";
     svgcontainer.innerHTML += newsvg;
 }
+let strokes = [
+    [
+        {
+            "x": 0.6017542815006753,
+            "y": 0.36385960279244456,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.3708771425492686,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.3778947722526412,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.40245620637479973,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.43052636540209616,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.45508770957770633,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.4796491436998649,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.5077193027271613,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.5287719219976337,
+            "color": "#1b1b1b",
+            "size": 4
+        },
+        {
+            "x": 0.6017542815006753,
+            "y": 0.5463157264164198,
+            "color": "#1b1b1b",
+            "size": 4
+        }
+    ],
+    [
+        {
+            "x": 0.5947368316903997,
+            "y": 0.2936841152776551,
+            "color": "#1b1b1b",
+            "size": 4
+        }
+    ]
+];
+createvector(strokes, 'A');
