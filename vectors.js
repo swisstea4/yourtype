@@ -49,7 +49,7 @@ function createvector(strokes1, letter) {
     function vectorstyle(stroke) {
         let strokeColor = stroke[0].color;
         let strokeSize = stroke[0].size;
-        let style = "stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString();
+        let style = "stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
         return style;
     }
 
