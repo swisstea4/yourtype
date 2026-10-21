@@ -1,16 +1,14 @@
 function createvector(strokes, letter) {
     let width = 100, height = 100;
-    const scale = 2000;
+    const scale = 500;
     let baseline = 0.69491525423;
     let padding = 0;
     function denormalize(pos) {
         let den = {...pos};
-        den.x *= width;
-        den.y *= height;
+        den.x *= (width-2*padding);
+        den.y *= (height-2*padding);
         den.x += padding;
         den.y += padding;
-        den.x = Math.round(den.x*1000)/1000;
-        den.y = Math.round(den.y*1000)/1000;
         return den;
     }
     function moveto(pos) {
@@ -79,13 +77,16 @@ function createvector(strokes, letter) {
             for (let i = 0; i < stroke.length; i++) {
                 stroke[i].x -= origin.x;
                 stroke[i].y -= origin.y;
+                stroke[i].x /= (maxx-minx);
+                stroke[i].y /= (maxy-miny);
                 if (stroke[i].x < 0 || stroke[i].y < 0) {
                     console.log(stroke[i]);
                 }
             }
         }
+        baseline = (baseline-origin.y)/(maxy-miny);
     }
-    
+
     setsize(strokes);
     console.log(strokes);
     const svgcontainer = document.getElementById("svgcontainer");
