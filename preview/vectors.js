@@ -1,6 +1,6 @@
 function createvector(strokes, letter) {
     let width = 100, height = 100;
-    const scale = 500;
+    const scale = 80;
     let baseline = 0.69491525423;
     let padding = 0;
     function denormalize(pos) {
