@@ -116,10 +116,35 @@ function createvector(strokes, letter) {
 
     newsvg += "</svg>";
     svgcontainer.innerHTML += newsvg;
+    return baseline;
 }
+function alignbaseline() {
+    let target = 0;
+    for (const letter of letters) {
+        const current = document.getElementById("svg" + letter);
+        if (current == null) continue;
+        current.style.transform = "";
+        const rect = current.getBoundingClientRect();
+        const baseline = baselines[letter];
+        const baselineY = rect.top + rect.height*baseline;
+        target = Math.max(target, baselineY);
+    }
+    for (const letter of letters) {
+        const current = document.getElementById("svg" + letter);
+        if (current == null) continue;
+        const rect = current.getBoundingClientRect();
+        const baseline = baselines[letter];
+        const baselineY = rect.top + rect.height*baseline;
+        const offset = target - baselineY;
+        current.style.transform = "translateY(" + offset.toString() + "px)";
+    }
+}
+let baselines = {};
+let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '"', '#', '\$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '\~'];
 let drawnletters = JSON.parse(localStorage.getItem("drawnletters"));
 for (const letter in drawnletters) {
     if (drawnletters[letter].length > 0) {
-        createvector(drawnletters[letter], letter);
+        baselines[letter] = createvector(drawnletters[letter], letter);
     }
 }
+alignbaseline();
