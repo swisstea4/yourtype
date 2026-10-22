@@ -1,5 +1,4 @@
-function createvector(strokes1, letter) {
-    let strokes = structuredClone(strokes1);
+function createvector(strokes, letter) {
     let width = 100, height = 100;
     const scale = 500;
     let baseline = 0.69491525423;
@@ -104,7 +103,6 @@ function createvector(strokes1, letter) {
             newcircle += "/>";
             
             newsvg += newcircle;
-            console.log(newcircle);
         }
         else {
             let newpath = "<path id=\"svgpath" + letter + i.toString() + "\"";
@@ -120,7 +118,6 @@ function createvector(strokes1, letter) {
     svgcontainer.innerHTML += newsvg;
 }
 let drawnletters = JSON.parse(localStorage.getItem("drawnletters"));
-console.log(drawnletters);
 for (const letter in drawnletters) {
     if (drawnletters[letter].length > 0) {
         createvector(drawnletters[letter], letter);
