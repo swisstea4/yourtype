@@ -159,7 +159,12 @@ function goLeft() {
     }, 500);
 };
 function goRight() {
-    if (currentLetter == letters.length-1) return;
+    drawnletters[letters[currentLetter]] = strokes;
+    localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
+    if (currentLetter == letters.length-1) {
+        window.location = "../preview";
+        return;
+    }
     const canvasbg = document.getElementById("canvasBG");
     const canvasbgtr = document.getElementById("canvasbgtr");
     const nextcoverup = document.getElementById("nextcoverup");
@@ -182,13 +187,12 @@ function goRight() {
         nextcoverup.classList.toggle("show");
     }, 550);
     const lettershow = document.getElementById("letter");
-    drawnletters[letters[currentLetter]] = strokes;
     currentLetter++;
-        if (!(letters[currentLetter] in drawnletters)) {
-            drawnletters[letters[currentLetter]] = [];
-        }
-        lettershow.textContent = letters[currentLetter];
-        strokes = drawnletters[letters[currentLetter]];
+    if (!(letters[currentLetter] in drawnletters)) {
+        drawnletters[letters[currentLetter]] = [];
+    }
+    lettershow.textContent = letters[currentLetter];
+    strokes = drawnletters[letters[currentLetter]];
     setTimeout(()=>{
         redraw();
     }, 500);

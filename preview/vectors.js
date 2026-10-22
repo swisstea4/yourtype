@@ -119,76 +119,10 @@ function createvector(strokes1, letter) {
     newsvg += "</svg>";
     svgcontainer.innerHTML += newsvg;
 }
-let strokes = [
-    [
-        {
-            "x": 0.6017542815006753,
-            "y": 0.36385960279244456,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.3708771425492686,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.3778947722526412,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.40245620637479973,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.43052636540209616,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.45508770957770633,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.4796491436998649,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.5077193027271613,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.5287719219976337,
-            "color": "#1b1b1b",
-            "size": 4
-        },
-        {
-            "x": 0.6017542815006753,
-            "y": 0.5463157264164198,
-            "color": "#1b1b1b",
-            "size": 4
-        }
-    ],
-    [
-        {
-            "x": 0.5947368316903997,
-            "y": 0.2936841152776551,
-            "color": "#1b1b1b",
-            "size": 4
-        }
-    ]
-];
-createvector(strokes, 'A');
+let drawnletters = JSON.parse(localStorage.getItem("drawnletters"));
+console.log(drawnletters);
+for (const letter in drawnletters) {
+    if (drawnletters[letter].length > 0) {
+        createvector(drawnletters[letter], letter);
+    }
+}
