@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Gorditas";
-    src: url("fonts/Gorditas-Regular.ttf") format("truetype");
+    src: url("../fonts/Gorditas-Regular.ttf") format("truetype");
     font-weight: normal;
 }
 @font-face {
     font-family: "Gorditas";
-    src: url("fonts/Gorditas-Bold.ttf") format("truetype");
+    src: url("../fonts/Gorditas-Bold.ttf") format("truetype");
     font-weight: bold;
 }
 body {
