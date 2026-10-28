@@ -1,4 +1,4 @@
-function createvector(strokes, letter) {
+function createvector(strokes, letter, id) {
     let width = 100, height = 100;
     const scale = 80;
     let baseline = 0.69491525423;
@@ -53,7 +53,7 @@ function createvector(strokes, letter) {
     function vectorstyle(stroke) {
         let strokeColor = stroke[0].color;
         let strokeSize = stroke[0].size;
-        let style = "stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
+        let style = "fill:none; stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
         return style;
     }
 
@@ -76,19 +76,21 @@ function createvector(strokes, letter) {
             x: minx,
             y: miny
         };
+        const spanx = (maxx-minx) || 1;
+        const spany = (maxy-miny) || 1;
         for (const stroke of strokes) {
             for (let i = 0; i < stroke.length; i++) {
                 stroke[i].x -= origin.x;
                 stroke[i].y -= origin.y;
-                stroke[i].x /= (maxx-minx);
-                stroke[i].y /= (maxy-miny);
+                stroke[i].x /= spanx;
+                stroke[i].y /= spany;
             }
         }
-        baseline = (baseline-origin.y)/(maxy-miny);
+        baseline = (baseline-origin.y)*scale + padding;
     }
 
     setsize(strokes);
-    const svgcontainer = document.getElementById("svgcontainer");
+    const svgcontainer = document.getElementById("svgcontainer" + Math.floor(id/10).toString());
     let newsvg = "<svg ";
     newsvg += "id=\"svg"+letter+"\" ";
     newsvg += "width=\""+width+"\" ";
@@ -105,8 +107,8 @@ function createvector(strokes, letter) {
             newsvg += newcircle;
         }
         else {
-            let newpath = "<path id=\"svgpath" + letter + i.toString() + "\"";
-            newpath += "d=\""+vectorpath(stroke)+"\"";
+            let newpath = "<path id=\"svgpath" + letter + i.toString() + "\" ";
+            newpath += "d=\""+vectorpath(stroke)+"\" ";
             newpath += "style=\"" + vectorstyle(stroke) + "\"";
             newpath += "/>";
 
@@ -119,32 +121,37 @@ function createvector(strokes, letter) {
     return baseline;
 }
 function alignbaseline() {
-    let target = 0;
-    for (const letter of letters) {
-        const current = document.getElementById("svg" + letter);
-        if (current == null) continue;
-        current.style.transform = "";
-        const rect = current.getBoundingClientRect();
-        const baseline = baselines[letter];
-        const baselineY = rect.top + rect.height*baseline;
-        target = Math.max(target, baselineY);
-    }
-    for (const letter of letters) {
-        const current = document.getElementById("svg" + letter);
-        if (current == null) continue;
-        const rect = current.getBoundingClientRect();
-        const baseline = baselines[letter];
-        const baselineY = rect.top + rect.height*baseline;
-        const offset = target - baselineY;
-        current.style.transform = "translateY(" + offset.toString() + "px)";
+    for (let i = 0; i < 10; i++) {
+    let target = -Infinity;
+        for (let j = 10*i; j < Math.min(10*(i+1), letters.length); j++) {
+            const letter = letters[j];
+            const current = document.getElementById("svg" + letter);
+            if (current == null) continue;
+            current.style.transform = "";
+            const rect = current.getBoundingClientRect();
+            const baseline = baselines[letter];
+            const baselineY = rect.top + baseline;
+            target = Math.max(target, baselineY);
+        }
+
+        for (let j = 10*i; j < Math.min(10*(i+1), letters.length); j++) {
+            const letter = letters[j];
+            const current = document.getElementById("svg" + letter);
+            if (current == null) continue;
+            const rect = current.getBoundingClientRect();
+            const baseline = baselines[letter];
+            const baselineY = rect.top + baseline;
+            const offset = target - baselineY;
+            current.style.transform = "translateY(" + offset.toString() + "px)";
+        }
     }
 }
 let baselines = {};
 let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '"', '#', '\$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '\~'];
-let drawnletters = JSON.parse(localStorage.getItem("drawnletters"));
-for (const letter in drawnletters) {
-    if (drawnletters[letter].length > 0) {
-        baselines[letter] = createvector(drawnletters[letter], letter);
+let drawnletters = JSON.parse(localStorage.getItem("drawnletters")) ?? {}; // CHANGED: handle empty storage
+for (const letter of letters) { // CHANGED: iterate in letters order, skips unknown keys
+    if (drawnletters[letter] && drawnletters[letter].length > 0) { // CHANGED
+        baselines[letter] = createvector(drawnletters[letter], letter, letters.indexOf(letter));
     }
 }
 alignbaseline();
