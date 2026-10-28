@@ -7,7 +7,6 @@ let isDrawing = false;
 let strokePoints = [];
 let strokes = [];
 let strokeSize = 4;
-let strokeColor = "#1b1b1b";
 
 let canvasSize = 50;
 
@@ -38,8 +37,8 @@ function beginPath(prev) {
     context.lineCap = "round";
     context.lineJoin = "round";
     context.moveTo(prev.x, prev.y);
-    context.strokeStyle = prev.color;
-    context.fillStyle = prev.color;
+    context.strokeStyle = "#1b1b1b";
+    context.fillStyle = "#1b1b1b";
     context.lineWidth = prev.size;
 }
 function redraw() {
@@ -89,7 +88,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 6;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = "#1b1b1b";;
+    cxt.strokeStyle = "#1b1b1b";
     cxt.moveTo(0.26*w, 0.7*h);
     cxt.lineTo(0.74*w, 0.7*h);
     cxt.stroke();
@@ -97,7 +96,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 8;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = "#1b1b1b";;
+    cxt.strokeStyle = "#1b1b1b";
     cxt.moveTo(0.26*w, 0.8*h);
     cxt.lineTo(0.74*w, 0.8*h);
     cxt.stroke();
@@ -105,7 +104,7 @@ function drawStrokeSize() {
     cxt.lineWidth = 10;
     cxt.lineCap = "round";
     cxt.lineJoin = "round";
-    cxt.strokeStyle = "#1b1b1b";;
+    cxt.strokeStyle = "#1b1b1b";
     cxt.moveTo(0.26*w, 0.9*h);
     cxt.lineTo(0.74*w, 0.9*h);
     cxt.stroke();

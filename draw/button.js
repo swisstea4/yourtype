@@ -85,31 +85,6 @@ increase.addEventListener("click", ()=>{
     }
 });
 
-black.addEventListener("click", ()=>{
-    strokeColor = "#1b1b1b";
-});
-red.addEventListener("click", ()=>{
-    strokeColor = "#ff3131";
-});
-green.addEventListener("click", ()=>{
-    strokeColor = "#00bf63";
-});
-yellow.addEventListener("click", ()=>{
-    strokeColor = "#ffde59";
-});
-white.addEventListener("click", ()=>{
-    strokeColor = "#ffffff";
-});
-blue.addEventListener("click", ()=>{
-    strokeColor = "#38b6ff";
-});
-pink.addEventListener("click", ()=>{
-    strokeColor = "#ff66c4";
-});
-brown.addEventListener("click", ()=>{
-    strokeColor = "#9f5139";
-});
-
 size1.addEventListener("click", ()=>{
     strokeSize = 4;
 });
