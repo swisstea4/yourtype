@@ -37,22 +37,22 @@
 }
 #previewinput {
     border: 4px solid #083b88;
-    width: 50vw;
-    height: 7vw;
+    width: 30vmax;
+    height: 5vmax;
     border-radius: 20px;
 
     font-family: "Gorditas";
-    font-size: 3.5vw;
+    font-size: 2.5vmax;
 }
 #previewbutton {
-    width: 20vw;
+    width: 10vmax;
     background-color: #e4efff;
     padding: 0;
     border: 4px solid #083b88;
     border-radius: 20px;
 
     font-family: "Gorditas";
-    font-size: 2.6vw;
+    font-size: 2vmax;
 
     cursor: pointer;
 }
