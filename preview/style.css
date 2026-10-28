@@ -13,27 +13,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 5vmax;
 }
 #svgcontainer {
     display: flex;
     flex-wrap: wrap;
-    width: 30vmax;
-    border: 4px solid #083b88;
-    border-radius: 20px;
+    width: 43vmax;
+    border: 0.4vmax solid #083b88;
+    border-radius: 2vmax;
 }
 #svgcontainer svg {
-    margin: 3px;
+    margin: 0.3vmax;
 }
 #inputcontainer {
     display: flex;
-    gap: 30px;
+    gap: 3vmax;
 }
 #previewinput {
-    border: 4px solid #083b88;
+    border: 0.4vmax solid #083b88;
     width: 30vmax;
     height: 5vmax;
-    border-radius: 20px;
+    border-radius: 2vmax;
 
     font-family: "Gorditas";
     font-size: 2.5vmax;
@@ -42,8 +42,8 @@
     width: 10vmax;
     background-color: #e4efff;
     padding: 0;
-    border: 4px solid #083b88;
-    border-radius: 20px;
+    border: 0.4vmax solid #083b88;
+    border-radius: 2vmax;
 
     font-family: "Gorditas";
     font-size: 2vmax;
