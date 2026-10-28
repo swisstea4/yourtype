@@ -22,6 +22,13 @@ function precalc() {
 }
 precalc();
 
+function denormalize(point, minx) {
+    let den = {...point};
+    den.x = (point.x-minx+padding)*scale;
+    den.y = (baseline-point.y)*scale;
+    return den;
+}
+
 function createpath(strokes, letter) {
     const Path = new opentype.Path();
     return Path;
