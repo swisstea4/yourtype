@@ -18,6 +18,7 @@
 #svgcontainer {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 43vmax;
     border: 0.4vmax solid #083b88;
     border-radius: 2vmax;
