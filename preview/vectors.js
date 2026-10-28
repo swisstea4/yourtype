@@ -70,13 +70,12 @@ function createvector(strokes, letter) {
         let den = denormalize(stroke[0], minx);
         circle += "cx=\"" + den.x.toString() + "\" ";
         circle += "cy=\"" + den.y.toString() + "\" ";
-        circle += "fill=\"" + stroke[0].color + "\" ";
+        circle += "fill=\" #000000 \" ";
         return circle;
     }
     function vectorstyle(stroke) {
-        let strokeColor = stroke[0].color;
         let strokeSize = stroke[0].size;
-        let style = "fill:none; stroke:" + strokeColor + "; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
+        let style = "fill:none; stroke: #000000; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
         return style;
     }
     
