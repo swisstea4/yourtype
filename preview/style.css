@@ -21,7 +21,7 @@
     justify-content: center;
     width: 43vmax;
     border: 0.4vmax solid #083b88;
-    border-radius: 2vmax;
+    border-radius: 1.5vmax;
 }
 #svgcontainer svg {
     margin: 0.3vmax;
@@ -34,7 +34,7 @@
     border: 0.4vmax solid #083b88;
     width: 30vmax;
     height: 5vmax;
-    border-radius: 2vmax;
+    border-radius: 1.5vmax;
 
     font-family: "Gorditas";
     font-size: 2.5vmax;
@@ -44,7 +44,7 @@
     background-color: #e4efff;
     padding: 0;
     border: 0.4vmax solid #083b88;
-    border-radius: 2vmax;
+    border-radius: 1.5vmax;
 
     font-family: "Gorditas";
     font-size: 2vmax;
@@ -53,4 +53,6 @@
 }
 #previewtext {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
