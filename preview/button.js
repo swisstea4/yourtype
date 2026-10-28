@@ -17,8 +17,11 @@ previewbutton.addEventListener("click", ()=>{
     previewtext.innerHTML = "";
     const input = previewinput.value;
     for (let letter of input) {
-        const svg = document.getElementById("svg" + letter);
-        if (svg == null) continue;
+        const svg = document.getElementById("svg" + letter.charCodeAt(0));
+        if (svg == null) {
+            previewtext.innerHTML += '<div style="width: 8px;"></div>';
+            continue;
+        }
         previewtext.innerHTML += svg.outerHTML;
     }
 });
