@@ -30,6 +30,12 @@ function denormalize(point, minx) {
 }
 
 function createpath(strokes, letter) {
+    let minx = 1;
+    for (const stroke of strokes) {
+        for (const point of stroke) {
+            minx = Math.min(minx, point.x);
+        }
+    }
     const Path = new opentype.Path();
     return Path;
 }
