@@ -12,7 +12,8 @@ previewbutton.addEventListener("pointerdown", ()=>{
 previewbutton.addEventListener("pointerup", ()=>{
     previewbutton.style.filter = "brightness(100%)";
 });
-previewbutton.addEventListener("click", ()=>{
+
+function showpreview() {
     const previewtext = document.getElementById("previewtext");
     previewtext.innerHTML = "";
     const input = previewinput.value;
@@ -23,5 +24,13 @@ previewbutton.addEventListener("click", ()=>{
             continue;
         }
         previewtext.innerHTML += svg.outerHTML;
+    }
+}
+previewbutton.addEventListener("click", ()=>{
+    showpreview();
+});
+document.addEventListener("keydown", (event)=>{
+    if (event.key == "Enter") {
+        showpreview();
     }
 });
