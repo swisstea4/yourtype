@@ -151,11 +151,11 @@ function findWidth(strokes) {
         }
     }
     const Width = (maxx - minx + 2*padding)*scale;
-    return Width;
+    return Math.round(Width);
 }
 function createglyph(strokes, letter) {
     const Glyph = new opentype.Glyph({
-        name: letter,
+        name: letter.charCodeAt(0),
         unicode: letter.charCodeAt(0),
         advanceWidth: findWidth(strokes),
         path: createpath(strokes)
@@ -176,7 +176,7 @@ for (const letter of letters) {
     }
     else {
         glyphs.push(new opentype.Glyph({
-            name: letter,
+            name: letter.charCodeAt(0),
             unicode: letter.charCodeAt(0),
             advanceWidth: 700,
             path: notdefPath
@@ -185,7 +185,7 @@ for (const letter of letters) {
 }
 
 glyphs.push(new opentype.Glyph({
-    name: " ",
+    name: " ".charCodeAt(0),
     unicode: " ".charCodeAt(0),
     advanceWidth: 300
 }));
@@ -200,13 +200,13 @@ const myFont = new opentype.Font({
     familyName: "myHandwriting",
     styleName: "regular",
     unitsPerEm: 1000,
-    ascender: ascent,
-    descender: descent,
+    ascender: Math.round(ascent),
+    descender: Math.round(descent),
     glyphs: [notdef, ...glyphs]
 });
 
 async function loadFont() {
-    const blob = new Blob([myFont.toArrayBuffer()], {type: "font/ttf"});
+    const blob = new Blob([myFont.toArrayBuffer()], {type: "font/otf"});
     const url = URL.createObjectURL(blob);
     const font = new FontFace("myHandwriting", `url(${url})`);
     await font.load();
