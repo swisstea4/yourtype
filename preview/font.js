@@ -19,13 +19,15 @@ function precalc() {
     ascent = (ascent + padding)*scale;
     descent = (descent + padding)*scale;
     height = ascent+descent;
+    descent = -descent;
 }
 precalc();
 
 function denormalize(point, minx) {
     let den = {...point};
     den.x = (point.x-minx+padding)*scale;
-    den.y = (baseline-point.y)*scale;
+    den.y = (baseline-point.y)*scale - descent;
+    den.size = point.size*scale;
     return den;
 }
 
@@ -37,6 +39,33 @@ function createpath(strokes, letter) {
         }
     }
     const Path = new opentype.Path();
+    let left = [], right = [];
+    for (const stroke of strokes) {
+        for (let i = 0; i < stroke.length; i++) {
+            let point1, point2;
+            if (i > 0) {
+                point1 = denormalize(stroke[i-1]);
+            }
+            else {
+                point1 = denormalize(stroke[i]);
+            }
+            if (i < stroke.length-1) {
+                point2 = denormalize(stroke[i+1]);
+            }
+            else {
+                point2 = denormalize(stroke[i]);
+            }
+            let d = {x: point2.x-point1.x, y: point2.y-point1.y};
+            let dlength = Math.sqrt(d.x*d.x + d.y*d.y);
+            let n = {x: (-d.y)/dlength, y: d.x/dlength};
+            
+            let point = denormalize(stroke[i]);
+            let pointl = {x: point.x + point.size/2 * n.x, y: point.y + point.size/2 * n.y};
+            let pointr = {x: point.x - point.size/2 * n.x, y: point.y - point.size/2 * n.y};
+            left.push(pointl);
+            right.push(pointr);
+        }
+    }
     return Path;
 }
 function createglyph(strokes, letter) {
