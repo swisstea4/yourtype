@@ -14,6 +14,8 @@ function precalc() {
             }
         }
     }
+
+    padding = padding*scale;
     ascent = ascent*scale + padding;
     descent = descent*scale + padding;
     height = ascent+descent;
@@ -66,7 +68,7 @@ function createvector(strokes, letter) {
         return d;
     }
     function vectorcircle(stroke) {
-        let circle = "r=\"" + (stroke[0].size/2).toString() + "\" ";
+        let circle = "r=\"" + (stroke[0].size/2*scale).toString() + "\" ";
         let den = denormalize(stroke[0], minx);
         circle += "cx=\"" + den.x.toString() + "\" ";
         circle += "cy=\"" + den.y.toString() + "\" ";
@@ -74,7 +76,7 @@ function createvector(strokes, letter) {
         return circle;
     }
     function vectorstyle(stroke) {
-        let strokeSize = stroke[0].size;
+        let strokeSize = stroke[0].size*scale;
         let style = "fill:none; stroke: #000000; stroke-width:" + strokeSize.toString() + "; stroke-linecap: round; stroke-linejoin: round";
         return style;
     }

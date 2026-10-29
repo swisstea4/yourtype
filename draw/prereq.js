@@ -24,12 +24,14 @@ function normalize(original) {
     let den = {...original};
     den.x = original.x/canvas.width;
     den.y = original.y/canvas.height;
+    den.size = original.size/canvas.width;
     return den;
 }
 function denormalize(original) {
     let den = {...original};
     den.x = original.x*canvas.width;
     den.y = original.y*canvas.height;
+    den.size = original.size*canvas.width;
     return den;
 }
 function beginPath(prev) {
@@ -58,7 +60,8 @@ function redraw() {
             beginPath(mid);
             const newMid = {
                 x : (pos.x + newPos.x)/2,
-                y : (pos.y + newPos.y)/2
+                y : (pos.y + newPos.y)/2,
+                size : pos.size
             }
             context.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
             context.stroke();

@@ -10,15 +10,6 @@ const next = document.getElementById("next");
 
 const close = document.getElementById("close");
 
-const black = document.getElementById("black");
-const red = document.getElementById("red");
-const green = document.getElementById("green");
-const yellow = document.getElementById("yellow");
-const white = document.getElementById("white");
-const blue = document.getElementById("blue");
-const pink = document.getElementById("pink");
-const brown = document.getElementById("brown");
-
 const size1 = document.getElementById("size1");
 const size2 = document.getElementById("size2");
 const size3 = document.getElementById("size3");
@@ -261,55 +252,6 @@ next.addEventListener("pointerleave", ()=>{
     nextimg.style.filter = "brightness(100%)";
 });
 
-black.addEventListener("pointerenter", ()=>{
-    black.style.filter = "brightness(120%)";
-});
-black.addEventListener("pointerleave", ()=>{
-    black.style.filter = "brightness(100%)";
-});
-red.addEventListener("pointerenter", ()=>{
-    red.style.filter = "brightness(120%)";
-});
-red.addEventListener("pointerleave", ()=>{
-    red.style.filter = "brightness(100%)";
-});
-green.addEventListener("pointerenter", ()=>{
-    green.style.filter = "brightness(120%)";
-});
-green.addEventListener("pointerleave", ()=>{
-    green.style.filter = "brightness(100%)";
-});
-yellow.addEventListener("pointerenter", ()=>{
-    yellow.style.filter = "brightness(120%)";
-});
-yellow.addEventListener("pointerleave", ()=>{
-    yellow.style.filter = "brightness(100%)";
-});
-white.addEventListener("pointerenter", ()=>{
-    white.style.filter = "brightness(120%)";
-});
-white.addEventListener("pointerleave", ()=>{
-    white.style.filter = "brightness(100%)";
-});
-blue.addEventListener("pointerenter", ()=>{
-    blue.style.filter = "brightness(120%)";
-});
-blue.addEventListener("pointerleave", ()=>{
-    blue.style.filter = "brightness(100%)";
-});
-pink.addEventListener("pointerenter", ()=>{
-    pink.style.filter = "brightness(120%)";
-});
-pink.addEventListener("pointerleave", ()=>{
-    pink.style.filter = "brightness(100%)";
-});
-brown.addEventListener("pointerenter", ()=>{
-    brown.style.filter = "brightness(120%)";
-});
-brown.addEventListener("pointerleave", ()=>{
-    brown.style.filter = "brightness(100%)";
-});
-
 size1.addEventListener("pointerenter", ()=>{
     size1.style.background = "rgba(255, 255, 255, 0.1)";
 });
@@ -390,54 +332,6 @@ next.addEventListener("pointerdown", ()=>{
 next.addEventListener("pointerup", ()=>{
     const nextimg = document.getElementById("nextimg");
     nextimg.style.filter = "brightness(70%)";
-});
-black.addEventListener("pointerdown", ()=>{
-    black.style.filter = "brightness(140%)";
-});
-black.addEventListener("pointerup", ()=>{
-    black.style.filter = "brightness(120%)";
-});
-red.addEventListener("pointerdown", ()=>{
-    red.style.filter = "brightness(140%)";
-});
-red.addEventListener("pointerup", ()=>{
-    red.style.filter = "brightness(120%)";
-});
-green.addEventListener("pointerdown", ()=>{
-    green.style.filter = "brightness(140%)";
-});
-green.addEventListener("pointerup", ()=>{
-    green.style.filter = "brightness(120%)";
-});
-yellow.addEventListener("pointerdown", ()=>{
-    yellow.style.filter = "brightness(140%)";
-});
-yellow.addEventListener("pointerup", ()=>{
-    yellow.style.filter = "brightness(120%)";
-});
-white.addEventListener("pointerdown", ()=>{
-    white.style.filter = "brightness(140%)";
-});
-white.addEventListener("pointerup", ()=>{
-    white.style.filter = "brightness(120%)";
-});
-blue.addEventListener("pointerdown", ()=>{
-    blue.style.filter = "brightness(140%)";
-});
-blue.addEventListener("pointerup", ()=>{
-    blue.style.filter = "brightness(120%)";
-});
-pink.addEventListener("pointerdown", ()=>{
-    pink.style.filter = "brightness(140%)";
-});
-pink.addEventListener("pointerup", ()=>{
-    pink.style.filter = "brightness(120%)";
-});
-brown.addEventListener("pointerdown", ()=>{
-    brown.style.filter = "brightness(140%)";
-});
-brown.addEventListener("pointerup", ()=>{
-    brown.style.filter = "brightness(120%)";
 });
 size1.addEventListener("pointerdown", ()=>{
     size1.style.background = "rgba(255, 255, 255, 0.2)";
