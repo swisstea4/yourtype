@@ -8,6 +8,11 @@
     src: url("../fonts/Gorditas-Bold.ttf") format("truetype");
     font-weight: bold;
 }
+#heading {
+    font-family: "Gorditas";
+    font-size: 5vmax;
+    margin: 0;
+}
 #container {
     display: flex;
     flex-direction: column;
@@ -15,7 +20,7 @@
     align-items: center;
     gap: 5vmax;
 }
-#svgcontainer {
+#previewall {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -23,37 +28,12 @@
     border: 0.4vmax solid #083b88;
     border-radius: 1.5vmax;
 }
-#svgcontainer svg {
-    margin: 0.3vmax;
-}
 #inputcontainer {
     display: flex;
     gap: 3vmax;
 }
-#previewinput {
-    border: 0.4vmax solid #083b88;
-    width: 30vmax;
-    height: 5vmax;
-    border-radius: 1.5vmax;
-
-    font-family: "Gorditas";
-    font-size: 2.5vmax;
-}
-#previewbutton {
-    width: 10vmax;
-    background-color: #e4efff;
-    padding: 0;
-    border: 0.4vmax solid #083b88;
-    border-radius: 1.5vmax;
-
-    font-family: "Gorditas";
-    font-size: 2vmax;
-
-    cursor: pointer;
-}
 #previewtext {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-size: 5vh;
+    font-size: 5vmax;
+    border: solid #083b88;
+    border-radius: 1.5vmax;
 }
