@@ -166,11 +166,20 @@ for (const letter of letters) {
         createglyph(drawnletters[letter], letter);
     }
 }
+
+const notdefPath = new opentype.Path();
+notdefPath.moveTo(100, descent);
+notdefPath.lineTo(600, descent);
+notdefPath.lineTo(600, ascent);
+notdefPath.lineTo(100, ascent);
+notdefPath.closePath();
+
 const notdef = new opentype.Glyph({
     name: ".notdef",
-    advanceWidth: findWidth(drawnletters[".notdef"]),
-    path: createpath(drawnletters[".notdef"])
+    advanceWidth: 700,
+    path: notdefPath
 });
+
 const myFont = new opentype.Font({
     familyName: "myHandwriting",
     styleName: "regular",
