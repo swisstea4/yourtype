@@ -39,8 +39,24 @@ function createpath(strokes, letter) {
         }
     }
     const Path = new opentype.Path();
+
+    function createcircle(pointl, pointr) {
+        let dx = pointl.x - pointr.x;
+        let dy = pointl.y - pointr.y;
+        let r = Math.sqrt(dx*dx + dy*dy)/2;
+        let center = {x: (pointl.x + pointr.x)/2, y: (pointl.y + pointr.y)/2};
+
+        Path.moveTo(center.x + r, center.y);
+        Path.quadraticCurveTo(center.x + r, center.y + r, center.x, center.y + r);
+        Path.quadraticCurveTo(center.x - r, center.y + r, center.x - r, center.y);
+        Path.quadraticCurveTo(center.x - r, center.y - r, center.x, center.y - r);
+        Path.quadraticCurveTo(center.x + r, center.y - r, center.x + r, center.y);
+        Path.closePath();
+    }
+
     let left = [], right = [];
     for (const stroke of strokes) {
+        if (stroke.length == 0) continue;
         left.push([]);
         right.push([]);
         for (let i = 0; i < stroke.length; i++) {
@@ -60,45 +76,53 @@ function createpath(strokes, letter) {
             let d = {x: point2.x-point1.x, y: point2.y-point1.y};
             let dlength = Math.sqrt(d.x*d.x + d.y*d.y);
             if (dlength == 0) {
-
+                let point = denormalize(stroke[i], minx);
+                let pointl = {x: point.x + point.size/2, y: point.y};
+                let pointr = {x: point.x - point.size/2, y: point.y};
+                left[left.length-1].push(pointl);
+                right[right.length-1].push(pointr);
             }
-            let n = {x: (-d.y)/dlength, y: d.x/dlength};
-            
-            let point = denormalize(stroke[i], minx);
-            let pointl = {x: point.x + point.size/2 * n.x, y: point.y + point.size/2 * n.y};
-            let pointr = {x: point.x - point.size/2 * n.x, y: point.y - point.size/2 * n.y};
-            left[left.length-1].push(pointl);
-            right[right.length-1].push(pointr);
+            else {
+                let n = {x: (-d.y)/dlength, y: d.x/dlength};
+                let point = denormalize(stroke[i], minx);
+                let pointl = {x: point.x + point.size/2 * n.x, y: point.y + point.size/2 * n.y};
+                let pointr = {x: point.x - point.size/2 * n.x, y: point.y - point.size/2 * n.y};
+                left[left.length-1].push(pointl);
+                right[right.length-1].push(pointr);
+            }
         }
-        right[right.length-1] = right[right.length-1].toReversed();
+        right[right.length-1].reverse();
     }
     for (let i = 0; i < left.length; i++) {
         const lstroke = left[i];
+        const rstroke = right[i];
         let pos = lstroke[0];
+
         if (lstroke.length == 1) {
-            //draw a circle
-        }
-        let mid = pos;
-        Path.moveTo(mid.x, mid.y);
-        for (const newPos of lstroke) {
-            const newMid = {
-                x: (pos.x + newPos.x)/2,
-                y: (pos.y + newPos.y)/2,
-                size: pos.size
-            }
-            Path.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
-            pos = newPos;
-            mid = newMid;
+            let pointl = lstroke[0];
+            let pointr = rstroke[0];
+            createcircle(pointl, pointr);
+            continue;
         }
 
-        const rstroke = right[i];
-        pos = rstroke[0];
-        if (rstroke.length == 1) {
-            //draw a circle
-        }
-        mid = pos;
+        let mid = pos;
         Path.moveTo(mid.x, mid.y);
-        for (const newPos of rstroke) {
+        for (let i = 1; i < lstroke.length; i++) {
+            const newPos = lstroke[i];
+            const newMid = {
+                x: (pos.x + newPos.x)/2,
+                y: (pos.y + newPos.y)/2
+            }
+            Path.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
+            pos = newPos;
+            mid = newMid;
+        }
+        Path.lineTo(pos.x, pos.y);
+
+        pos = rstroke[0];
+        mid = pos;
+        for (let i = 1; i < rstroke.length; i++) {
+            const newPos = rstroke[i];
             const newMid = {
                 x: (pos.x + newPos.x)/2,
                 y: (pos.y + newPos.y)/2,
@@ -107,7 +131,11 @@ function createpath(strokes, letter) {
             pos = newPos;
             mid = newMid;
         }
+        Path.lineTo(pos.x, pos.y);
         Path.closePath();
+
+        createcircle(lstroke[lstroke.length-1], rstroke[0]);
+        createcircle(rstroke[rstroke.length-1], lstroke[0]);
     }
     return Path;
 }
