@@ -131,3 +131,8 @@ const settingsobserver = new ResizeObserver(() =>{
     drawStrokeSize();
 });
 settingsobserver.observe(settingscanvas.parentElement);
+
+if (drawnletters[letters[0]]) {
+    strokes = drawnletters[letters[0]];
+    redraw();
+}
