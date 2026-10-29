@@ -184,6 +184,12 @@ for (const letter of letters) {
     }
 }
 
+glyphs.push(new opentype.Glyph({
+    name: " ",
+    unicode: " ".charCodeAt(0),
+    advanceWidth: 300
+}));
+
 const notdef = new opentype.Glyph({
     name: ".notdef",
     advanceWidth: 700,
