@@ -217,8 +217,6 @@ async function loadFont() {
     
     const allletters = document.getElementById("allletters");
     allletters.style.fontFamily = "myHandwriting";
-    for (const letter of letters) {
-        allletters.textContent += letter;
-    }
+    allletters.textContent = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#\$%&\()*+-./:;<=>?@[\\]^_`{|}\~";
 }
 loadFont();
