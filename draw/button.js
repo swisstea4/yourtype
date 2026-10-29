@@ -29,6 +29,8 @@ guidelines.addEventListener("click", ()=>{
 undo.addEventListener("click",()=>{
     if (strokes.length === 0) return;
     strokes.pop();
+    drawnletters[letters[currentLetter]] = [...strokes];
+    localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
     redraw();
 });
 settings.addEventListener("click", ()=>{
@@ -113,7 +115,8 @@ function goLeft() {
         previouscoverup.classList.toggle("show");
     }, 550);
     const lettershow = document.getElementById("letter");
-    drawnletters[letters[currentLetter]] = strokes;
+    drawnletters[letters[currentLetter]] = [...strokes];
+    localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
     currentLetter--;
     if (!(letters[currentLetter] in drawnletters)) {
         drawnletters[letters[currentLetter]] = [];
@@ -125,7 +128,7 @@ function goLeft() {
     }, 500);
 };
 function goRight() {
-    drawnletters[letters[currentLetter]] = strokes;
+    drawnletters[letters[currentLetter]] = [...strokes];
     localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
     if (currentLetter == letters.length-1) {
         window.location = "../preview";

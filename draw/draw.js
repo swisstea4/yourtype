@@ -39,6 +39,9 @@ canvas.addEventListener("pointerup", ()=>{
     beginPath(mid);
     context.lineTo(pos.x, pos.y);
     context.stroke();
+
+    drawnletters[letter[currentLetter]] = [...strokes];
+    localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
 });
 canvas.addEventListener("pointercancel", ()=>{
     isDrawing = false;
