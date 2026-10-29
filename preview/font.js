@@ -31,7 +31,7 @@ function denormalize(point, minx) {
     return den;
 }
 
-function createpath(strokes, letter) {
+function createpath(strokes) {
     let minx = 1;
     for (const stroke of strokes) {
         for (const point of stroke) {
@@ -139,12 +139,24 @@ function createpath(strokes, letter) {
     }
     return Path;
 }
+
+function findWidth(strokes) {
+    let maxx = 0, minx = 1;
+    for (const stroke of strokes) {
+        for (const point of stroke) {
+            maxx = Math.max(point.x, maxx);
+            minx = Math.min(point.x, minx);
+        }
+    }
+    const Width = (maxx - minx + 2*padding)*scale;
+    return Width;
+}
 function createglyph(strokes, letter) {
     const Glyph = new opentype.Glyph({
         name: letter,
         unicode: letter.charCodeAt(0),
-        advanceWidth: ,
-        path: createpath(strokes, letter)
+        advanceWidth: findWidth(strokes),
+        path: createpath(strokes)
     });
     glyphs.push(Glyph);
 }
@@ -154,11 +166,16 @@ for (const letter of letters) {
         createglyph(drawnletters[letter], letter);
     }
 }
+const notdef = new opentype.Glyph({
+    name: ".notdef",
+    advanceWidth: findWidth(drawnletters[".notdef"]),
+    path: createpath(drawnletters[".notdef"])
+});
 const myFont = new opentype.Font({
     familyName: "myHandwriting",
     styleName: "regular",
     unitsPerEm: 1000,
     ascender: ascent,
     descender: descent,
-    glyphs: glyphs
+    glyphs: [notdef, ...glyphs]
 });
