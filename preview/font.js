@@ -2,7 +2,7 @@ let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
 let drawnletters = JSON.parse(localStorage.getItem("drawnletters")) || {};
 let glyphs = [];
 
-let ascent = 0, descent = 0, height = 0, scale = 80, padding = 0;
+let ascent = 0, descent = 0, height = 0, scale = 0, padding = 0;
 const baseline = 0.69491525423;
 function precalc() {
     for (const letter of letters) {
@@ -16,6 +16,7 @@ function precalc() {
             }
         }
     }
+    scale = 800/(ascent + padding);
     ascent = (ascent + padding)*scale;
     descent = (descent + padding)*scale;
     height = ascent+descent;
@@ -26,7 +27,7 @@ precalc();
 function denormalize(point, minx) {
     let den = {...point};
     den.x = (point.x-minx+padding)*scale;
-    den.y = (baseline-point.y)*scale - descent;
+    den.y = (baseline-point.y)*scale;
     den.size = point.size*scale;
     return den;
 }
@@ -162,18 +163,26 @@ function createglyph(strokes, letter) {
     glyphs.push(Glyph);
 }
 
-for (const letter of letters) {
-    if (drawnletters[letter] && drawnletters[letter].length > 0) {
-        createglyph(drawnletters[letter], letter);
-    }
-}
-
 const notdefPath = new opentype.Path();
 notdefPath.moveTo(100, descent);
 notdefPath.lineTo(600, descent);
 notdefPath.lineTo(600, ascent);
 notdefPath.lineTo(100, ascent);
 notdefPath.closePath();
+
+for (const letter of letters) {
+    if (drawnletters[letter] && drawnletters[letter].length > 0) {
+        createglyph(drawnletters[letter], letter);
+    }
+    else {
+        glyphs.push(new opentype.Glyph({
+            name: letter,
+            unicode: letter.charCodeAt(0),
+            advanceWidth: 700,
+            path: notdefPath
+        }));
+    }
+}
 
 const notdef = new opentype.Glyph({
     name: ".notdef",
