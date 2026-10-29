@@ -41,29 +41,51 @@ function createpath(strokes, letter) {
     const Path = new opentype.Path();
     let left = [], right = [];
     for (const stroke of strokes) {
+        left.push([]);
+        right.push([]);
         for (let i = 0; i < stroke.length; i++) {
             let point1, point2;
             if (i > 0) {
-                point1 = denormalize(stroke[i-1]);
+                point1 = denormalize(stroke[i-1], minx);
             }
             else {
-                point1 = denormalize(stroke[i]);
+                point1 = denormalize(stroke[i], minx);
             }
             if (i < stroke.length-1) {
-                point2 = denormalize(stroke[i+1]);
+                point2 = denormalize(stroke[i+1], minx);
             }
             else {
-                point2 = denormalize(stroke[i]);
+                point2 = denormalize(stroke[i], minx);
             }
             let d = {x: point2.x-point1.x, y: point2.y-point1.y};
             let dlength = Math.sqrt(d.x*d.x + d.y*d.y);
             let n = {x: (-d.y)/dlength, y: d.x/dlength};
             
-            let point = denormalize(stroke[i]);
+            let point = denormalize(stroke[i], minx);
             let pointl = {x: point.x + point.size/2 * n.x, y: point.y + point.size/2 * n.y};
             let pointr = {x: point.x - point.size/2 * n.x, y: point.y - point.size/2 * n.y};
-            left.push(pointl);
-            right.push(pointr);
+            left[left.length-1].push(pointl);
+            right[right.length-1].push(pointr);
+        }
+        right[right.length-1] = right[right.length-1].toReversed();
+    }
+    right = right.toReversed();
+    for (const stroke of left) {
+        let pos = stroke[0];
+        if (stroke.length == 1) {
+            //draw a circle
+        }
+        let mid = pos;
+        Path.moveTo(mid.x, mid.y);
+        for (const newPos of stroke) {
+            const newMid = {
+                x: (pos.x + newPos.x)/2,
+                y: (pos.y + newPos.y)/2,
+                size: pos.size
+            }
+            Path.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
+            pos = newPos;
+            mid = newMid;
         }
     }
     return Path;
