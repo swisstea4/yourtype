@@ -211,7 +211,14 @@ async function loadFont() {
     const font = new FontFace("myHandwriting", `url(${url})`);
     await font.load();
     document.fonts.add(font);
+
     const previewtext = document.getElementById("previewtext");
     previewtext.style.fontFamily = "myHandwriting";
+    
+    const allletters = document.getElementById("allletters");
+    allletters.style.fontFamily = "myHandwriting";
+    for (const letter of letters) {
+        allletters.textContent += letter;
+    }
 }
 loadFont();

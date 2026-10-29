@@ -28,12 +28,20 @@
     border: 0.4vmax solid #083b88;
     border-radius: 1.5vmax;
 }
-#inputcontainer {
-    display: flex;
-    gap: 3vmax;
+#allletters {
+    text-align: center;
+    font-size: 5vmax;
+    max-width: 50vmax;
+    overflow-wrap: break-word;
+    padding: 2vmax;
+    margin: 0;
+    border: 0.4vmax solid #083b88;
+    border-radius: 1.5vmax;
 }
 #previewtext {
     font-size: 5vmax;
     border: solid #083b88;
     border-radius: 1.5vmax;
+
+    max-width: 55vmax;
 }
