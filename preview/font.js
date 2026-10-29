@@ -1,5 +1,5 @@
 let letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '"', '#', '\$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '\~'];
-let drawnletters = JSON.parse(localStorage.getItem("drawnletters"));
+let drawnletters = JSON.parse(localStorage.getItem("drawnletters")) || {};
 let glyphs = [];
 
 let ascent = 0, descent = 0, height = 0, scale = 80, padding = 0;
@@ -47,10 +47,10 @@ function createpath(strokes) {
         let center = {x: (pointl.x + pointr.x)/2, y: (pointl.y + pointr.y)/2};
 
         Path.moveTo(center.x + r, center.y);
-        Path.quadraticCurveTo(center.x + r, center.y + r, center.x, center.y + r);
-        Path.quadraticCurveTo(center.x - r, center.y + r, center.x - r, center.y);
-        Path.quadraticCurveTo(center.x - r, center.y - r, center.x, center.y - r);
-        Path.quadraticCurveTo(center.x + r, center.y - r, center.x + r, center.y);
+        Path.quadraticCurveTo(center.x + r, center.y - r, center.x, center.y - r);
+        Path.quadraticCurveTo(center.x - r, center.y - r, center.x - r, center.y);
+        Path.quadraticCurveTo(center.x - r, center.y + r, center.x, center.y + r);
+        Path.quadraticCurveTo(center.x + r, center.y + r, center.x + r, center.y);
         Path.closePath();
     }
 
@@ -121,6 +121,7 @@ function createpath(strokes) {
 
         pos = rstroke[0];
         mid = pos;
+        Path.lineTo(pos.x, pos.y);
         for (let i = 1; i < rstroke.length; i++) {
             const newPos = rstroke[i];
             const newMid = {
@@ -188,3 +189,14 @@ const myFont = new opentype.Font({
     descender: descent,
     glyphs: [notdef, ...glyphs]
 });
+
+async function loadFont() {
+    const blob = new Blob([myFont.toArrayBuffer()], {type: "font/ttf"});
+    const url = URL.createObjectURL(blob);
+    const font = new FontFace("myHandwriting", `url(${url})`);
+    await font.load();
+    document.fonts.add(font);
+    const previewtext = document.getElementById("previewtext");
+    previewtext.style.fontFamily = "myHandwriting";
+}
+loadFont();

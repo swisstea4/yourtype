@@ -15,16 +15,8 @@ previewbutton.addEventListener("pointerup", ()=>{
 
 function showpreview() {
     const previewtext = document.getElementById("previewtext");
-    previewtext.innerHTML = "";
     const input = previewinput.value;
-    for (let letter of input) {
-        const svg = document.getElementById("svg" + letter.charCodeAt(0));
-        if (svg == null) {
-            previewtext.innerHTML += '<div style="width: 8px;"></div>';
-            continue;
-        }
-        previewtext.innerHTML += svg.outerHTML;
-    }
+    previewtext.innerHTML = input;
 }
 previewbutton.addEventListener("click", ()=>{
     showpreview();
