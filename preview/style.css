@@ -23,7 +23,7 @@
 #allletters {
     text-align: center;
     font-size: 4vmax;
-    max-width: 60vmax;
+    max-width: 40vmax;
     overflow-wrap: break-word;
     padding: 2vmax;
     margin: 0;
@@ -31,9 +31,8 @@
     border-radius: 1.5vmax;
 }
 #previewtext {
-    font-size: 5vmax;
+    font-size: 4vmax;
     border: 0.4vmax solid #083b88;
-    border-radius: 1.5vmax;
 
     max-width: 40vmax;
 }
