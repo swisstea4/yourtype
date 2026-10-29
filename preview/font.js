@@ -59,6 +59,9 @@ function createpath(strokes, letter) {
             }
             let d = {x: point2.x-point1.x, y: point2.y-point1.y};
             let dlength = Math.sqrt(d.x*d.x + d.y*d.y);
+            if (dlength == 0) {
+
+            }
             let n = {x: (-d.y)/dlength, y: d.x/dlength};
             
             let point = denormalize(stroke[i], minx);
@@ -69,15 +72,15 @@ function createpath(strokes, letter) {
         }
         right[right.length-1] = right[right.length-1].toReversed();
     }
-    right = right.toReversed();
-    for (const stroke of left) {
-        let pos = stroke[0];
-        if (stroke.length == 1) {
+    for (let i = 0; i < left.length; i++) {
+        const lstroke = left[i];
+        let pos = lstroke[0];
+        if (lstroke.length == 1) {
             //draw a circle
         }
         let mid = pos;
         Path.moveTo(mid.x, mid.y);
-        for (const newPos of stroke) {
+        for (const newPos of lstroke) {
             const newMid = {
                 x: (pos.x + newPos.x)/2,
                 y: (pos.y + newPos.y)/2,
@@ -87,6 +90,24 @@ function createpath(strokes, letter) {
             pos = newPos;
             mid = newMid;
         }
+
+        const rstroke = right[i];
+        pos = rstroke[0];
+        if (rstroke.length == 1) {
+            //draw a circle
+        }
+        mid = pos;
+        Path.moveTo(mid.x, mid.y);
+        for (const newPos of rstroke) {
+            const newMid = {
+                x: (pos.x + newPos.x)/2,
+                y: (pos.y + newPos.y)/2,
+            }
+            Path.quadraticCurveTo(pos.x, pos.y, newMid.x, newMid.y);
+            pos = newPos;
+            mid = newMid;
+        }
+        Path.closePath();
     }
     return Path;
 }
