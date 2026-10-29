@@ -18,20 +18,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5vmax;
-}
-#previewall {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 43vmax;
-    border: 0.4vmax solid #083b88;
-    border-radius: 1.5vmax;
+    gap: 4vmax;
 }
 #allletters {
     text-align: center;
-    font-size: 5vmax;
-    max-width: 50vmax;
+    font-size: 4vmax;
+    max-width: 60vmax;
     overflow-wrap: break-word;
     padding: 2vmax;
     margin: 0;
@@ -40,8 +32,8 @@
 }
 #previewtext {
     font-size: 5vmax;
-    border: solid #083b88;
+    border: 0.4vmax solid #083b88;
     border-radius: 1.5vmax;
 
-    max-width: 55vmax;
+    max-width: 40vmax;
 }
