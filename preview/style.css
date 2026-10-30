@@ -37,7 +37,7 @@
 }
 #download {
     padding: 1vmax;
-    margin-top: 1.5vmax;
+    margin: 1.5vmax;
 
     font-family: "Gorditas";
     font-size: 2vmax;
@@ -47,4 +47,23 @@
     border-radius: 1.5vmax;
 
     cursor: pointer;
+}
+#guide {
+    font-family: "Gorditas";
+
+    background-color: #E4EFFF;
+    border: 0.4vmax solid #083b88;
+    border-radius: 1.5vmax;
+
+    max-width: 40vmax;
+}
+#guide h1, h2, p {
+    margin: 1.5vmax;
+}
+#terminal {
+    padding: 1.5vmax;
+    width: fit-content;
+    background-color: #1b1b1b;
+    border-radius: 1.5vmax;
+    color: #E4EFFF; 
 }
