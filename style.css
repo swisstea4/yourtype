@@ -36,4 +36,6 @@ body * {
     border-radius: 1vw;
 
     padding: 1vw;
+    
+    cursor: pointer;
 }

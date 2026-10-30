@@ -12,4 +12,22 @@
         <p id="subtitle">Make a usable font out of your handwriting!</p>
         <button id="godraw">start writing</button>
     </div>
+    <script>
+        const godraw = document.getElementById("godraw");
+        godraw.addEventListener("pointerenter", ()=>{
+            godraw.style.filter = "brightness(85%)";
+        });
+        godraw.addEventListener("pointerleave", ()=>{
+            godraw.style.filter = "brightness(100%)";
+        });
+        godraw.addEventListener("pointerdown", ()=>{
+            godraw.style.filter = "brightness(80%)";
+        });
+        godraw.addEventListener("pointerup", ()=>{
+            godraw.style.filter = "brightness(100%)";
+        });
+        godraw.addEventListener("click", ()=>{
+            window.location = "/draw";
+        });
+    </script>
 </body>
