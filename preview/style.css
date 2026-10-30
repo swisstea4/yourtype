@@ -35,9 +35,15 @@
 
     width: 40vw;
 }
-#download {
+
+#buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5vmax;
+}
+#download, #goback {
     padding: 1vmax;
-    margin: 1.5vmax;
+    margin-top: 1.5vmax;
 
     font-family: "Gorditas";
     font-size: 2vmax;
@@ -48,6 +54,7 @@
 
     cursor: pointer;
 }
+
 #collapseguide {
     font-family: "Gorditas";
     font-size: 2vmax;

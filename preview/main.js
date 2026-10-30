@@ -241,3 +241,20 @@ download.addEventListener("click", ()=>{
     downloadfont.href = fontURL;
     downloadfont.click();
 });
+
+const goback = document.getElementById("goback");
+goback.addEventListener("pointerenter", ()=>{
+    goback.style.filter = "brightness(85%)";
+});
+goback.addEventListener("pointerleave", ()=>{
+    goback.style.filter = "brightness(100%)";
+});
+goback.addEventListener("pointerdown", ()=>{
+    goback.style.filter = "brightness(80%)";
+});
+goback.addEventListener("pointerup", ()=>{
+    goback.style.filter = "brightness(100%)";
+});
+goback.addEventListener("click", ()=>{
+    window.location = "../draw";
+});
