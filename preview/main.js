@@ -205,9 +205,11 @@ const myFont = new opentype.Font({
     glyphs: [notdef, ...glyphs]
 });
 
+let fontURL;
 async function loadFont() {
     const blob = new Blob([myFont.toArrayBuffer()], {type: "font/otf"});
     const url = URL.createObjectURL(blob);
+    fontURL = url;
     const font = new FontFace("myHandwriting", `url(${url})`);
     await font.load();
     document.fonts.add(font);
@@ -220,3 +222,17 @@ async function loadFont() {
     allletters.textContent = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#\$%&\()*+-./:;<=>?@[\\]^_`{|}\~";
 }
 loadFont();
+
+const download = document.getElementById("download");
+download.addEventListener("pointerenter", ()=>{
+    download.style.filter = "brightness(85%)";
+});
+download.addEventListener("pointerleave", ()=>{
+    download.style.filter = "brightness(100%)";
+});
+download.addEventListener("pointerdown", ()=>{
+    download.style.filter = "brightness(80%)";
+});
+download.addEventListener("pointerup", ()=>{
+    download.style.filter = "brightness(100%)";
+});
