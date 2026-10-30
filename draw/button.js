@@ -22,9 +22,9 @@ guidelines.addEventListener("click", ()=>{
     const canvasbgtl = document.getElementById("canvasbgtl");
     const canvasbgtr = document.getElementById("canvasbgtr");
     canvasc = (canvasc+1)%3;
-    canvasbg.src = "images/canvasbg" + canvasc.toString() + ".png";
-    canvasbgtl.src = "images/canvasbgtl" + canvasc.toString() + ".png";
-    canvasbgtr.src = "images/canvasbgtr" + canvasc.toString() + ".png";
+    canvasbg.src = "../images/canvasbg" + canvasc.toString() + ".png";
+    canvasbgtl.src = "../images/canvasbgtl" + canvasc.toString() + ".png";
+    canvasbgtr.src = "../images/canvasbgtr" + canvasc.toString() + ".png";
 });
 undo.addEventListener("click",()=>{
     if (strokes.length === 0) return;

@@ -9,7 +9,7 @@
     font-weight: bold;
 }
 body {
-    background-image: url(/draw/images/background.png);
+    background-image: url(images/background.png);
     background-size: cover;
     background-position: bottom;
 }
