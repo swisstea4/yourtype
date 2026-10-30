@@ -40,8 +40,8 @@ body::-webkit-scrollbar {
     transition: width 0.2s ease, height 0.2s ease, visibility 0.2s ease allow-discrete;
 }
 #settingspage.show {
-    width: 20vmax;
-    height: 25vmax;
+    width: 25vmax;
+    height: 16.8vmax;
     visibility: visible;
 }
 #settingsbg {
@@ -59,7 +59,7 @@ body::-webkit-scrollbar {
 #size1 {
     position: absolute;
     left: 25%;
-    top: 59%;
+    top: 19%;
     width: 50%;
     height: 5px;
     cursor: pointer;
@@ -71,7 +71,7 @@ body::-webkit-scrollbar {
 #size2 {
     position: absolute;
     left: 25%;
-    top: 69%;
+    top: 39%;
     width: 50.1%;
     height: 6px;
     cursor: pointer;
@@ -83,7 +83,7 @@ body::-webkit-scrollbar {
 #size3 {
     position: absolute;
     left: 25%;
-    top: 79%;
+    top: 58%;
     width: 50.5%;
     height: 8px;
     cursor: pointer;
@@ -95,8 +95,8 @@ body::-webkit-scrollbar {
 #size4 {
     position: absolute;
     left: 24.2%;
-    top: 88.5%;
-    width: 60%;
+    top: 78%;
+    width: 50.8%;
     height: 10px;
     cursor: pointer;
     background: transparent;
