@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Gorditas";
+    src: url("../fonts/Gorditas-Regular.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "Gorditas";
+    src: url("../fonts/Gorditas-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+body * {
+    font-family: "Gorditas";
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+#title {
+    font-size: 10vw;
+    margin: 0;
+    padding: 3vw;
+}
+#subtitle {
+    font-size: 3vw;
+}
+#godraw {
+    font-size: 3vw;
+    background-color: #E4EFFF;
+    border: 0.4vw solid #083b88;
+    border-radius: 1vw;
+
+    padding: 1vw;
+}
