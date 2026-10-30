@@ -236,3 +236,8 @@ download.addEventListener("pointerdown", ()=>{
 download.addEventListener("pointerup", ()=>{
     download.style.filter = "brightness(100%)";
 });
+download.addEventListener("click", ()=>{
+    const downloadfont = document.getElementById("downloadfont");
+    downloadfont.href = fontURL;
+    downloadfont.click();
+});
