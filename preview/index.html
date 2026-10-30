@@ -12,29 +12,32 @@
         <h1 id="heading">Preview</h1>
         <p id="allletters"></p>
         <textarea id="previewtext" placeholder="the quick brown fox jumped over the lazy dog"></textarea>
+        <details id="collapseguide">
+            <summary>How to use</summary>
+            <div id="guide">
+                <h1>Windows</h1>
+                <hr>
+                <p>1. Download the .otf file.<br>2. Double-click the file to open the font preview.<br>3. Click Install at the top.<br>The font is now available in supported applications such as Microsoft Word and PowerPoint.</p>
+                <h1>Linux</h1>
+                <hr>
+                <h2>Method 1</h2>
+                <p>1. Download the .otf file.<br>2. Open your file manager and locate the downloaded file.<br>3. Double click the file to open it in your font viewer.<br>4. Click install if available.<br></p>
+                <h2>Method 2</h2>
+                <p>1. Open a terminal.<br>2. Run these commands:</p>
+                <p id="terminal">mkdir -p ~/.local/share/fonts<br>cp ~/Downloads/myHandwriting.otf ~/.local/share/fonts/<br>fc-cache -f -v</p>
+                <p>The font should be available in your applications.</p>
+                <h1>MacOS</h1>
+                <hr>
+                <p>1. Download the .otf file.<br>2. Open it in fontBook.<br>3. Click Install Font.<br>The font is now available in supported applications.</p>
+                <h1>Android</h1>
+                <hr>
+                <p>The process depends on your phone manufacturer.<br>Note that some android devices also don't support installing custom fonts system-wide.</p>
+                <p>1. Download the .otf file.<br>2. Open your phone settings and look for Display, Fonts, or Font style.<br>3. If your phone supports importing custom fonts, select the downloaded file.</p>
+            </div>
+        </details>
         <button id="download">
             download
         </button>
-        <div id="guide">
-            <h1>Windows</h1>
-            <hr>
-            <p>1. Download the .otf file.<br>2. Double-click the file to open the font preview.<br>3. Click Install at the top.<br>The font is now available in supported applications such as Microsoft Word and PowerPoint.</p>
-            <h1>Linux</h1>
-            <hr>
-            <h2>Method 1</h2>
-            <p>1. Download the .otf file.<br>2. Open your file manager and locate the downloaded file.<br>3. Double click the file to open it in your font viewer.<br>4. Click install if available.<br></p>
-            <h2>Method 2</h2>
-            <p>1. Open a terminal.<br>2. Run these commands:</p>
-            <p id="terminal">mkdir -p ~/.local/share/fonts<br>cp ~/Downloads/myHandwriting.otf ~/.local/share/fonts/<br>fc-cache -f -v</p>
-            <p>The font should be available in your applications.</p>
-            <h1>MacOS</h1>
-            <hr>
-            <p>1. Download the .otf file.<br>2. Open it in fontBook.<br>3. Click Install Font.<br>The font is now available in supported applications.</p>
-            <h1>Android</h1>
-            <hr>
-            <p>The process depends on your phone manufacturer.<br>Note that some android devices also don't support installing custom fonts system-wide.</p>
-            <p>1. Download the .otf file.<br>2. Open your phone settings and look for Display, Fonts, or Font style.<br>3. If your phone supports importing custom fonts, select the downloaded file.</p>
-        </div>
     </div>
 </body>
 </html>
