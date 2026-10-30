@@ -51,6 +51,8 @@
 #collapseguide {
     font-family: "Gorditas";
     font-size: 2vmax;
+
+    cursor: pointer;
 }
 #guide {
     font-family: "Gorditas";
@@ -63,6 +65,11 @@
 }
 #guide h1, h2, p {
     margin: 1.5vmax;
+}
+#guide hr {
+    width: 50%;
+    margin: 1.5vmax;
+    border-color: #083b88;
 }
 #terminal {
     padding: 1.5vmax;
