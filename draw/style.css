@@ -226,63 +226,38 @@ body::-webkit-scrollbar {
     width: 1em;
     height: 1em;
     flex-shrink: 0;
+    view-transition-name: stage;
 }
 #canvasBG {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: right;
     z-index: 1;
-    transition: width 0.5s ease;
 }
-#canvasBG.no-transition {
-    transition: none;
+::view-transition-old(stage),
+::view-transition-new(stage) {
+    animation: none;
+    mix-blend-mode: normal;
 }
-#canvasBG.wipe {
-    width: 0%;
+::view-transition-new(stage) {
+    animation: 0.5s ease both;
 }
-#canvasbgtr {
-    position: absolute;
-    width: 210%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right;
-    display: none;
-    z-index: 1;
-    transition: width 0.55s ease, display 0s allow-discrete;
+html[data-dir="next"]::view-transition-new(stage) {
+    animation-name: wipe-from-right;
 }
-#canvasbgtr.no-transition {
-    transition: none;
+html[data-dir="prev"]::view-transition-new(stage) {
+    animation-name: wipe-from-left;
 }
-#canvasbgtr.wipe {
-    width: 100%;
-    display: block;
-    @starting-style {
-        width: 210%;
-    }
+@keyframes wipe-from-right {
+    from { clip-path: inset(0 0 0 100%); }
+    to   { clip-path: inset(0 0 0 0); }
 }
-#canvasbgtl {
-    position: absolute;
-    width: 210%;
-    height: 100%;
-    right: 0%;
-    object-fit: cover;
-    object-position: left;
-    display: none;
-    z-index: 1;
-    transition: width 0.55s ease, display 0s allow-discrete;
-}
-#canvasbgtl.no-transition {
-    transition: none;
-}
-#canvasbgtl.wipe {
-    width: 100%;
-    display: block;
-    @starting-style {
-        width: 210%;
-        right: 0%;
-    }
+@keyframes wipe-from-left {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
 }
 #canvas {
     position: absolute;
@@ -293,30 +268,6 @@ body::-webkit-scrollbar {
     height: 95%;
     z-index: 2;
     touch-action: none;
-}
-#nextcoverup {
-    position: absolute;
-    width: 110%;
-    height: 100%;
-    background-color: white;
-    display: none;
-    left: 100%;
-    z-index: 2;
-}
-#nextcoverup.show {
-    display: block;
-}
-#previouscoverup {
-    position: absolute;
-    width: 110%;
-    height: 100%;
-    background-color: white;
-    display: none;
-    left: -110%;
-    z-index: 2;
-}
-#previouscoverup.show {
-    display: block;
 }
 #previous, #next {
     background: transparent;

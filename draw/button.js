@@ -19,12 +19,8 @@ drawTools.classList.toggle("size50");
 
 guidelines.addEventListener("click", ()=>{
     const canvasbg = document.getElementById("canvasBG");
-    const canvasbgtl = document.getElementById("canvasbgtl");
-    const canvasbgtr = document.getElementById("canvasbgtr");
     canvasc = (canvasc+1)%3;
     canvasbg.src = "../images/canvasbg" + canvasc.toString() + ".png";
-    canvasbgtl.src = "../images/canvasbgtl" + canvasc.toString() + ".png";
-    canvasbgtr.src = "../images/canvasbgtr" + canvasc.toString() + ".png";
 });
 undo.addEventListener("click",()=>{
     if (strokes.length === 0) return;
@@ -91,41 +87,29 @@ size4.addEventListener("click", ()=>{
     strokeSize = 10;
 });
 
+function transition(dir, update) {
+    if (!document.startViewTransition) {
+        update();
+        return;
+    }
+    document.documentElement.dataset.dir = dir;
+    document.startViewTransition(update);
+}
 function goLeft() {
     if (currentLetter == 0) return;
-    const canvasbg = document.getElementById("canvasBG");
-    const canvasbgtl = document.getElementById("canvasbgtl");
-    const previouscoverup = document.getElementById("previouscoverup");
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    canvasbg.style.objectPosition = "left";
-    canvasbg.style.right = "0%";
-    previouscoverup.classList.toggle("show");
-    canvasbg.classList.toggle("wipe");
-    canvasbgtl.classList.toggle("wipe");
-    setTimeout(()=>{
-        canvasbg.classList.add("no-transition");
-        canvasbg.classList.remove("wipe");
-        canvasbg.offsetWidth;
-        canvasbg.classList.remove("no-transition");
-
-        canvasbgtl.classList.add("no-transition");
-        canvasbgtl.classList.remove("wipe");
-        canvasbgtl.offsetWidth;
-        canvasbgtl.classList.remove("no-transition");
-        previouscoverup.classList.toggle("show");
-    }, 550);
-    const lettershow = document.getElementById("letter");
     drawnletters[letters[currentLetter]] = [...strokes];
     localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
-    currentLetter--;
-    if (!(letters[currentLetter] in drawnletters)) {
-        drawnletters[letters[currentLetter]] = [];
-    }
-    lettershow.textContent = letters[currentLetter];
-    strokes = drawnletters[letters[currentLetter]];
-    setTimeout(()=>{
+    transition("prev", ()=>{
+        currentLetter--;
+        if (!(letters[currentLetter] in drawnletters)) {
+            drawnletters[letters[currentLetter]] = [];
+        }
+        const letter = document.getElementById("letter");
+        letter.textContent = letters[currentLetter];
+        strokes = drawnletters[letters[currentLetter]];
+        context.clearRect(0, 0, canvas.width, canvas.height);
         redraw();
-    }, 500);
+    })
 };
 function goRight() {
     drawnletters[letters[currentLetter]] = [...strokes];
@@ -134,38 +118,18 @@ function goRight() {
         window.location = "../preview";
         return;
     }
-    const canvasbg = document.getElementById("canvasBG");
-    const canvasbgtr = document.getElementById("canvasbgtr");
-    const nextcoverup = document.getElementById("nextcoverup");
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    canvasbg.style.objectPosition = "right";
-    canvasbg.style.removeProperty("right");
-    nextcoverup.classList.toggle("show");
-    canvasbg.classList.toggle("wipe");
-    canvasbgtr.classList.toggle("wipe");
-    setTimeout(()=>{
-        canvasbg.classList.add("no-transition");
-        canvasbg.classList.remove("wipe");
-        canvasbg.offsetWidth;
-        canvasbg.classList.remove("no-transition");
-
-        canvasbgtr.classList.add("no-transition");
-        canvasbgtr.classList.remove("wipe");
-        canvasbgtr.offsetWidth;
-        canvasbgtr.classList.remove("no-transition");
-        nextcoverup.classList.toggle("show");
-    }, 550);
-    const lettershow = document.getElementById("letter");
-    currentLetter++;
-    if (!(letters[currentLetter] in drawnletters)) {
-        drawnletters[letters[currentLetter]] = [];
-    }
-    lettershow.textContent = letters[currentLetter];
-    strokes = drawnletters[letters[currentLetter]];
-    setTimeout(()=>{
+    transition("next", ()=>{
+        currentLetter++;
+        if (!(letters[currentLetter] in drawnletters)) {
+            drawnletters[letters[currentLetter]] = [];
+        }
+        const letter = document.getElementById("letter");
+        letter.textContent = letters[currentLetter];
+        strokes = drawnletters[letters[currentLetter]];
+        context.clearRect(0, 0, canvas.width, canvas.height);
         redraw();
-    }, 500);
-}
+    })
+};
 previous.addEventListener("click", goLeft);
 document.addEventListener("keydown", (event)=>{
     if (event.key == "ArrowLeft") {
