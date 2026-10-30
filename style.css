@@ -8,6 +8,11 @@
     src: url("../fonts/Gorditas-Bold.ttf") format("truetype");
     font-weight: bold;
 }
+body {
+    background-image: url(/draw/images/background.png);
+    background-size: cover;
+    background-position: bottom;
+}
 body * {
     font-family: "Gorditas";
 }
