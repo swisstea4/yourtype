@@ -1,7 +1,7 @@
 # YourType
 A website to turn your handwriting into a font!
 ## How to use
-You can try it out here: 
+You can try it out here: https://swisstea4.github.io/yourtype/
 
 - Write out letters (capital A-Z, small a-z, numbers 0-9, punctuation, etc.)
 - Your written letters will automatically be turned into an otf (OpenType Font) file, which you can download and use in supported applications.
