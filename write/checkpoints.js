@@ -220,7 +220,7 @@ function makeFont() {
         allletters.style.fontFamily = "myHandwriting";
         let lettersString =  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#\$%&\()*+-./:;<=>?@[\\]^_`{|}\~";
         for (let i = 0; i < lettersString.length;) {
-            if (!drawnletters[lettersString[i]]) {
+            if (drawnletters[lettersString[i]].length === 0) {
                 lettersString = lettersString.slice(0, i) + lettersString.slice(i+1);
             }
             else {
@@ -247,4 +247,21 @@ goback.addEventListener("pointerup", ()=>{
 });
 goback.addEventListener("click", ()=>{
     goLeft();
+});
+
+const gonext = document.getElementById("continue");
+gonext.addEventListener("pointerenter", ()=>{
+    gonext.style.filter = "brightness(85%)";
+});
+gonext.addEventListener("pointerleave", ()=>{
+    gonext.style.filter = "brightness(100%)";
+});
+gonext.addEventListener("pointerdown", ()=>{
+    gonext.style.filter = "brightness(80%)";
+});
+gonext.addEventListener("pointerup", ()=>{
+    gonext.style.filter = "brightness(100%)";
+});
+gonext.addEventListener("click", ()=>{
+    goRight();
 });
