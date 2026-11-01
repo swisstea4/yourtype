@@ -308,7 +308,7 @@ html[data-dir="prev"]::view-transition-new(stage) {
     font-weight: normal;
     text-align: center;
     color: #1b1b1b;
-    font-size: initial;
+    font-size: 1.5vmax;
     width: fit-content;
     
     top: 70%;
@@ -361,4 +361,12 @@ html[data-dir="prev"]::view-transition-new(stage) {
 }
 #arrowkeys {
     width: 30%;
+}
+
+#index {
+    font-family: "Gorditas";
+    font-size: 3vh;
+    position: absolute;
+    top: 0%;
+    left: 3%;
 }
