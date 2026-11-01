@@ -99,7 +99,7 @@ html {
 #emptyletters {
     position: absolute;
     left: 1%;
-    top: 50%;
+    top: 50vh;
     width: 15vmax;
     
     font-family: "Gorditas";
