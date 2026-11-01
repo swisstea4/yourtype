@@ -235,7 +235,6 @@ body::-webkit-scrollbar {
     width: 1em;
     height: 1em;
     flex-shrink: 0;
-    view-transition-name: stage;
 }
 #canvasBG {
     position: absolute;
@@ -246,28 +245,15 @@ body::-webkit-scrollbar {
     object-position: right;
     z-index: 1;
 }
+
+#transitionstage {
+    view-transition-name: stage;   
+}
 ::view-transition-old(stage),
 ::view-transition-new(stage) {
-    animation: none;
-    mix-blend-mode: normal;
+    animation-duration: 0.5s;
 }
-::view-transition-new(stage) {
-    animation: 0.5s ease both;
-}
-html[data-dir="next"]::view-transition-new(stage) {
-    animation-name: wipe-from-right;
-}
-html[data-dir="prev"]::view-transition-new(stage) {
-    animation-name: wipe-from-left;
-}
-@keyframes wipe-from-right {
-    from { clip-path: inset(0 0 0 100%); }
-    to   { clip-path: inset(0 0 0 0); }
-}
-@keyframes wipe-from-left {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0 0 0); }
-}
+#transitionstage { outline: 3px solid red; }
 #canvas {
     position: absolute;
     top: 50%;
