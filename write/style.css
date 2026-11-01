@@ -386,3 +386,21 @@ body::-webkit-scrollbar {
 
     width: 40vw;
 }
+#cbuttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5vmax;
+}
+#goback, #continue {
+    padding: 1vmax;
+    margin-top: 1.5vmax;
+
+    font-family: "Gorditas";
+    font-size: 2vmax;
+
+    background-color: #E4EFFF;
+    border: 0.4vmax solid #083b88;
+    border-radius: 1.5vmax;
+
+    cursor: pointer;
+}
