@@ -121,7 +121,7 @@ function goLeft() {
             letter.textContent = letters[currentLetter];
             strokes = drawnletters[letters[currentLetter]];
             const index = document.getElementById("index");
-            index.textContent = (currentIndex).toString() + "/94";
+            index.textContent = (currentIndex).toString() + "/95";
             context.clearRect(0, 0, canvas.width, canvas.height);
             redraw();
         }
@@ -156,7 +156,7 @@ function goRight() {
             letter.textContent = letters[currentLetter];
             strokes = drawnletters[letters[currentLetter]];
             const index = document.getElementById("index");
-            index.textContent = (currentIndex).toString() + "/94";
+            index.textContent = (currentIndex).toString() + "/95";
             context.clearRect(0, 0, canvas.width, canvas.height);
             redraw();
         }
