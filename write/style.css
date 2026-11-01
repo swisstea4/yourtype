@@ -368,5 +368,36 @@ html[data-dir="prev"]::view-transition-new(stage) {
     font-size: 3vh;
     position: absolute;
     top: 0%;
-    left: 3%;
+    left: 1%;
+}
+
+#checkpoint {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: none;
+}
+#allletters {
+    text-align: center;
+    font-size: 4vmax;
+    max-width: 40vmax;
+    overflow-wrap: break-word;
+    padding: 2vmax;
+    margin: 4vmax;
+    border: 0.4vmax solid #083b88;
+    border-radius: 1.5vmax;
+    background-color: #ffffff;
+}
+#previewtext {
+    font-size: 4vmax;
+    border: 0.4vmax solid #083b88;
+
+    width: 40vw;
 }

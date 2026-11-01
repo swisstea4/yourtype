@@ -101,16 +101,28 @@ function goLeft() {
     localStorage.setItem("drawnletters", JSON.stringify(drawnletters));
     transition("prev", ()=>{
         currentLetter--;
-        if (!(letters[currentLetter] in drawnletters)) {
-            drawnletters[letters[currentLetter]] = [];
+        if (letters[currentLetter] == 'checkpoint') {
+            const hideforcheckpoint = document.getElementById("hideforcheckpoint");
+            const checkpoint = document.getElementById("checkpoint");
+            checkpoint.style.display = "flex";
+            hideforcheckpoint.style.display = "none";
         }
-        const letter = document.getElementById("letter");
-        letter.textContent = letters[currentLetter];
-        strokes = drawnletters[letters[currentLetter]];
-        const index = document.getElementById("index");
-        index.textContent = (currentLetter+1).toString() + "/94";
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        redraw();
+        else {
+            const hideforcheckpoint = document.getElementById("hideforcheckpoint");
+            const checkpoint = document.getElementById("checkpoint");
+            checkpoint.style.display = "none";
+            hideforcheckpoint.style.display = "block";
+            if (!(letters[currentLetter] in drawnletters)) {
+                drawnletters[letters[currentLetter]] = [];
+            }
+            const letter = document.getElementById("letter");
+            letter.textContent = letters[currentLetter];
+            strokes = drawnletters[letters[currentLetter]];
+            const index = document.getElementById("index");
+            index.textContent = (currentLetter+1).toString() + "/94";
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            redraw();
+        }
     })
 };
 function goRight() {
@@ -122,16 +134,28 @@ function goRight() {
     }
     transition("next", ()=>{
         currentLetter++;
-        if (!(letters[currentLetter] in drawnletters)) {
-            drawnletters[letters[currentLetter]] = [];
+        if (letters[currentLetter] == 'checkpoint') {
+            const hideforcheckpoint = document.getElementById("hideforcheckpoint");
+            const checkpoint = document.getElementById("checkpoint");
+            checkpoint.style.display = "flex";
+            hideforcheckpoint.style.display = "none";
         }
-        const letter = document.getElementById("letter");
-        letter.textContent = letters[currentLetter];
-        strokes = drawnletters[letters[currentLetter]];
-        const index = document.getElementById("index");
-        index.textContent = (currentLetter+1).toString() + "/94";
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        redraw();
+        else {
+            const hideforcheckpoint = document.getElementById("hideforcheckpoint");
+            const checkpoint = document.getElementById("checkpoint");
+            checkpoint.style.display = "none";
+            hideforcheckpoint.style.display = "block";
+            if (!(letters[currentLetter] in drawnletters)) {
+                drawnletters[letters[currentLetter]] = [];
+            }
+            const letter = document.getElementById("letter");
+            letter.textContent = letters[currentLetter];
+            strokes = drawnletters[letters[currentLetter]];
+            const index = document.getElementById("index");
+            index.textContent = (currentLetter+1).toString() + "/94";
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            redraw();
+        }
     })
 };
 previous.addEventListener("click", goLeft);
