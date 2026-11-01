@@ -108,6 +108,7 @@ function goLeft() {
             hideforcheckpoint.style.display = "none";
         }
         else {
+            currentIndex++;
             const hideforcheckpoint = document.getElementById("hideforcheckpoint");
             const checkpoint = document.getElementById("checkpoint");
             checkpoint.style.display = "none";
@@ -141,6 +142,7 @@ function goRight() {
             hideforcheckpoint.style.display = "none";
         }
         else {
+            currentIndex++;
             const hideforcheckpoint = document.getElementById("hideforcheckpoint");
             const checkpoint = document.getElementById("checkpoint");
             checkpoint.style.display = "none";
@@ -152,7 +154,7 @@ function goRight() {
             letter.textContent = letters[currentLetter];
             strokes = drawnletters[letters[currentLetter]];
             const index = document.getElementById("index");
-            index.textContent = (currentLetter+1).toString() + "/94";
+            index.textContent = (currentIndex).toString() + "/94";
             context.clearRect(0, 0, canvas.width, canvas.height);
             redraw();
         }
