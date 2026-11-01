@@ -37,6 +37,7 @@ html {
     margin: 4vmax;
     border: 0.4vmax solid #083b88;
     border-radius: 1.5vmax;
+    background-color: #ffffff;
 }
 #previewtext {
     font-size: 4vmax;
