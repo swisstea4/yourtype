@@ -95,3 +95,13 @@ html {
     border-radius: 1.5vmax;
     color: #E4EFFF; 
 }
+
+#emptyletters {
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    width: 15vmax;
+    
+    font-family: "Gorditas";
+    text-align: center;
+}

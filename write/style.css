@@ -364,8 +364,6 @@ body::-webkit-scrollbar {
     align-items: center;
 
     width: 100vw;
-    top: 50%;
-    transform: translateY(-50%);
 
     display: none;
 }
@@ -408,4 +406,13 @@ body::-webkit-scrollbar {
     border-radius: 1.5vmax;
 
     cursor: pointer;
+}
+#emptyletters {
+    position: absolute;
+    left: 1%;
+    top: 50%;
+    width: 15vmax;
+    
+    font-family: "Gorditas";
+    text-align: center;
 }
