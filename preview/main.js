@@ -256,5 +256,5 @@ goback.addEventListener("pointerup", ()=>{
     goback.style.filter = "brightness(100%)";
 });
 goback.addEventListener("click", ()=>{
-    window.location = "../draw";
+    window.location = "../write";
 });
