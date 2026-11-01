@@ -68,7 +68,8 @@ html {
 #collapseguide {
     font-family: "Gorditas";
     font-size: 2vmax;
-
+}
+#collapseguide summary{
     cursor: pointer;
 }
 #guide {
