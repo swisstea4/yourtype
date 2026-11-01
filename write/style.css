@@ -369,6 +369,11 @@ body::-webkit-scrollbar {
 
     display: none;
 }
+#heading {
+    font-family: "Gorditas";
+    font-size: 5vmax;
+    margin: 0;
+}
 #allletters {
     text-align: center;
     font-size: 4vmax;
