@@ -104,6 +104,7 @@ function goLeft() {
         if (letters[currentLetter] == 'checkpoint') {
             const hideforcheckpoint = document.getElementById("hideforcheckpoint");
             const checkpoint = document.getElementById("checkpoint");
+            makeFont();
             checkpoint.style.display = "flex";
             hideforcheckpoint.style.display = "none";
         }
@@ -138,6 +139,7 @@ function goRight() {
         if (letters[currentLetter] == 'checkpoint') {
             const hideforcheckpoint = document.getElementById("hideforcheckpoint");
             const checkpoint = document.getElementById("checkpoint");
+            makeFont();
             checkpoint.style.display = "flex";
             hideforcheckpoint.style.display = "none";
         }
