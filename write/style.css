@@ -253,7 +253,6 @@ body::-webkit-scrollbar {
 ::view-transition-new(stage) {
     animation-duration: 0.5s;
 }
-#transitionstage { outline: 3px solid red; }
 #canvas {
     position: absolute;
     top: 50%;
