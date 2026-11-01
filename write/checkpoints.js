@@ -206,11 +206,9 @@ function makeFont() {
         glyphs: [notdef, ...glyphs]
     });
 
-    let fontURL;
     async function loadFont() {
         const blob = new Blob([myFont.toArrayBuffer()], {type: "font/otf"});
         const url = URL.createObjectURL(blob);
-        fontURL = url;
         const font = new FontFace("myHandwriting", `url(${url})`);
         await font.load();
 
@@ -225,7 +223,7 @@ function makeFont() {
         
         const allletters = document.getElementById("allletters");
         allletters.style.fontFamily = "myHandwriting";
-        let lettersString =  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"#\$%&\()*+-./:;<=>?@[\\]^_`{|}\~";
+        let lettersString =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#\$%&\'()*+,-./:;<=>?@[\\]^_`{|}\~';
         for (let i = 0; i < lettersString.length;) {
             if (!drawnletters[lettersString[i]] || drawnletters[lettersString[i]].length === 0) {
                 lettersString = lettersString.slice(0, i) + lettersString.slice(i+1);
